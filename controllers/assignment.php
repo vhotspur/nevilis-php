@@ -29,6 +29,7 @@ function page_assignment_main() {
 	set('description', $info->description);
 	set('files', $info->files);
 	set('grade', $info->grade);
+	set('locked', $info->locked);
 	
     return html('assignment/index.html.php');
 }

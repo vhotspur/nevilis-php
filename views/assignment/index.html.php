@@ -20,20 +20,29 @@ if (count($files) > 0) {
 	foreach ($files as $f) {
 		printf("<fieldset><legend>%s [%d]</legend>\n", h($f->name), $f->afid);
 		printf("<p>%s</p>\n", h($f->description));
+		
 		printf("<p>");
 		if ($f->submitted) {
-			printf("<a href=\"%s\">%s</a> %s\n",
+			printf("<a href=\"%s\">%s</a>",
 				url_for($course_id, $assignment_id, $f->filename),
-				"Download your file",
-				"or upload a new one: ");
+				"Download your file");
 		} else {
-			printf("Upload this file: ");
+			printf("<i>%s</i>", "File not yet uploaded.");
 		}
-		printf("\n<input type=\"file\" name=\"f%d\" />", $f->afid);
+		printf("</p>\n");
+		
+		printf("<p>");
+		if ($locked) {
+			printf("<i>%s</i>", "File uploading not possible.");
+		} else {
+			printf("<input type=\"file\" name=\"f%d\" />", $f->afid);
+		}
 		printf("</p>\n");
 		printf("</fieldset>\n");
 	} ?>
+	<?php if (!$locked) { ?>
 	<input type="submit" value="Upload files..." />
+	<?php } ?>
 	</form>
 <?php
 }

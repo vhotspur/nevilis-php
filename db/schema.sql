@@ -26,6 +26,7 @@ CREATE TABLE "grade" (
 	`user`	TEXT,
 	`assignment`	TEXT,
 	`grade`	INTEGER,
+	`locked` INTEGER NOT NULL DEFAULT 0,
 	`comment`	TEXT
 );
 CREATE TABLE "assignmentfile" (

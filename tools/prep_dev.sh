@@ -31,20 +31,25 @@ INSERT INTO "courseusers" VALUES('user1','c1');
 
 INSERT INTO "assignment" VALUES('hw1','Homework #1','This is some description');
 INSERT INTO "assignment" VALUES('hw2','Second homework','Lorem Ipsum Dolor Sit Amet.');
+INSERT INTO "assignment" VALUES('hw3','Last homework','Lorem Ipsum Dolor Sit Amet.');
 INSERT INTO "assignmentfile" VALUES(1,'xxx.jpg','hw2','Picture','Your picture',45000,'jpeg');
 INSERT INTO "assignmentfile" VALUES(2,'yyy.png','hw1','Some PNG','First assignment picture',500,'png');
 INSERT INTO "assignmentfile" VALUES(3,'zzz.jpg','hw2','Two','Another picture',45000,'jpeg');
+INSERT INTO "assignmentfile" VALUES(4,'aaa.jpg','hw3','Lorem Ipsum','Another picture',45000,'jpeg');
 
 INSERT INTO "courseassignment" VALUES('c1','hw1');
 INSERT INTO "courseassignment" VALUES('c1','hw2');
+INSERT INTO "courseassignment" VALUES('c1','hw3');
 
 INSERT INTO "submittedfile" VALUES(1,'user1',2);
 INSERT INTO "submittedfile" VALUES(2,'user1',1);
-INSERT INTO "grade" VALUES('user1','hw1',2,'Not bad, really :-).');
+INSERT INTO "submittedfile" VALUES(3,'user1',3);
+INSERT INTO "grade" VALUES('user1','hw1',2,1,'Not bad, really :-).');
+INSERT INTO "grade" VALUES('user1','hw2',null,0,'Fix this!');
 
 DELETE FROM sqlite_sequence;
-INSERT INTO "sqlite_sequence" VALUES('submittedfile',2);
-INSERT INTO "sqlite_sequence" VALUES('assignmentfile',3);
+INSERT INTO "sqlite_sequence" VALUES('submittedfile',3);
+INSERT INTO "sqlite_sequence" VALUES('assignmentfile',4);
 COMMIT;
 EOF_DEV_DATA
 

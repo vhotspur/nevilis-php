@@ -107,6 +107,7 @@ function data_get_assignment_details_for_user($assignment, $user) {
 	$info->grade = db_find_object("get grade of the assignment",
 		"SELECT
 			grade,
+			locked,
 			comment
 		FROM
 			grade
@@ -115,6 +116,12 @@ function data_get_assignment_details_for_user($assignment, $user) {
 			AND assignment = :assignment",
 		array("assignment" => $assignment, "user" => $user)
 	);
+	
+	if ($info->grade == null) {
+		$info->locked = false;
+	} else {
+		$info->locked = $info->grade->locked > 0;
+	}
 	
 	return $info;
 }
