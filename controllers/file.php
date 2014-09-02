@@ -1,0 +1,35 @@
+<?php
+
+function page_file_download() {
+	$course = params('course');
+	$assignment = params('assignment');
+	$filename = params('filename');
+	$user = auth_get_current_user();
+
+	check_user_can_view_course($course);
+	check_assignment_belongs_to_course($assignment, $course);
+	
+	$id = data_get_file_id($filename, $user, $assignment);
+	if ($id == 0) {
+		flash('error', 'File not uploaded.');
+		redirect_to($course, $assignment);
+	}
+	
+	$path = sprintf('files/%s/%s/%s', $user, $assignment, $filename);
+	// copied from lib/limonade.php
+	if (file_exists($path)) {
+		$content_type = mime_type(file_extension($filename));
+		$header = 'Content-type: '.$content_type;
+		if (file_is_text($path)) {
+			$header .= '; charset='.strtolower(option('encoding'));
+		}
+		if (!headers_sent()) {
+			header($header);
+		}
+		return file_read($path, 0);
+	} else {
+		flash('error', sprintf("File %s not found, contact administrator.", $filename));
+		redirect_to($course, $assignment);
+	}
+}
+

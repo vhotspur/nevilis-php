@@ -1,0 +1,6 @@
+db/dev.db
+dev_files/
+
+.project
+.settings
+.buildpath
