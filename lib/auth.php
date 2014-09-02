@@ -28,7 +28,7 @@ function auth_check_user_and_start_session($user, $password) {
 		array("uid" => $user));
 	
 	if ($result != null) {
-		if ($password == $result->password) {
+		if (password_verify($password, $result->password)) {
 			$_SESSION['user'] = $user;
 			$_SESSION['user_roles'] = $result->roles;
 			

@@ -2,6 +2,10 @@
 
 DB_FILE="db/dev.db"
 SQLITE=`which sqlite3`
+PHP=`which php`
+
+[ -z "$SQLITE" ] && exit 1
+[ -z "$PHP" ] && exit 1
 
 if [ "$1" == "--force" ]; then
 	rm -f $DB_FILE
@@ -17,8 +21,9 @@ $SQLITE $DB_FILE <db/schema.sql
 # Insert the data
 $SQLITE $DB_FILE <<'EOF_DEV_DATA'
 BEGIN TRANSACTION;
-INSERT INTO "user" VALUES('admin','1234','Super User','admin');
-INSERT INTO "user" VALUES('user1','1234','User One',NULL);
+-- Password will be fixed later
+INSERT INTO "user" VALUES('admin','xxx','Super User','admin');
+INSERT INTO "user" VALUES('user1','xxx','User One',NULL);
 
 INSERT INTO "course" VALUES('c1','Example course');
 
@@ -42,6 +47,12 @@ INSERT INTO "sqlite_sequence" VALUES('submittedfile',2);
 INSERT INTO "sqlite_sequence" VALUES('assignmentfile',3);
 COMMIT;
 EOF_DEV_DATA
+
+# Fix the password
+for user in admin user1; do
+	echo '<?php printf("UPDATE user SET password=\"%s\" WHERE uid=\"'"$user"'\";\n", password_hash("1234", PASSWORD_DEFAULT));' \
+		| $PHP | $SQLITE $DB_FILE
+done
 
 # Create the files
 mkdir -p dev_files/user1/hw1/
