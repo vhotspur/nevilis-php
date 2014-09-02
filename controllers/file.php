@@ -15,7 +15,7 @@ function page_file_download() {
 		redirect_to($course, $assignment);
 	}
 	
-	$path = sprintf('files/%s/%s/%s', $user, $assignment, $filename);
+	$path = sprintf('%s/%s/%s/%s', option('file_dir'), $user, $assignment, $filename);
 	// copied from lib/limonade.php
 	if (file_exists($path)) {
 		$content_type = mime_type(file_extension($filename));
