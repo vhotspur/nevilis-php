@@ -80,6 +80,42 @@ function data_get_assignment_details_for_user($assignment, $user) {
 	
 	$info->files = $files;
 	
+	$submitted = db_find_objects("get actually submitted files",
+		"SELECT
+			sfid,
+			afid
+		FROM
+			submittedfile
+			JOIN assignmentfile ON assignmentfile.afid=submittedfile.file
+		WHERE
+			assignmentfile.assignment = :assignment
+			AND submittedfile.user = :user",
+		array("assignment" => $assignment, "user" => $user)
+	);
+	
+	foreach ($info->files as $f) {
+		$f->submitted = false;
+		foreach ($submitted as $s) {
+			if ($s->afid == $f->afid) {
+				$f->submitted = true;
+				$f->submitted_id = $s->sfid;
+				break;
+			}
+		}
+	}
+	
+	$info->grade = db_find_object("get grade of the assignment",
+		"SELECT
+			grade,
+			comment
+		FROM
+			grade
+		WHERE
+			user = :user
+			AND assignment = :assignment",
+		array("assignment" => $assignment, "user" => $user)
+	);
+	
 	return $info;
 }
 

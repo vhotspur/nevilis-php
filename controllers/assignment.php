@@ -28,6 +28,7 @@ function page_assignment_main() {
 	set('name', $info->name);
 	set('description', $info->description);
 	set('files', $info->files);
+	set('grade', $info->grade);
 	
     return html('assignment/index.html.php');
 }
