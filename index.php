@@ -64,6 +64,7 @@ if (auth_is_user_logged_in()) {
 	
 	dispatch('/:course', 'page_course_main');
 	dispatch('/:course/:assignment', 'page_assignment_main');
+	dispatch_post('/:course/:assignment/upload', 'page_assignment_do_upload');
 	dispatch('/:course/:assignment/:filename', 'page_file_download');	
 } else {
 	dispatch_post('/login', 'page_auth_do_login');

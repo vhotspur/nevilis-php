@@ -15,7 +15,7 @@ if ($grade != null) {
 if (count($files) > 0) {
 ?>
 	<h2>Files</h2>
-	<form method="post" action="<?php echo url_for($course_id, $assignment_id); ?>">
+	<form method="post" action="<?php echo url_for($course_id, $assignment_id, 'upload'); ?>" enctype="multipart/form-data">
 <?php
 	foreach ($files as $f) {
 		printf("<fieldset><legend>%s [%d]</legend>\n", h($f->name), $f->afid);

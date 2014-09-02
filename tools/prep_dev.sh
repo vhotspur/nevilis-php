@@ -66,3 +66,4 @@ convert -size 20x20 xc:blue dev_files/user1/hw1/yyy.png
 # Fix permissions
 chmod a+w $DB_FILE
 chmod a+w `dirname $DB_FILE`
+chmod a+w dev_files
