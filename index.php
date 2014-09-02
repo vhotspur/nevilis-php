@@ -51,6 +51,9 @@ if (auth_is_user_logged_in()) {
 	dispatch('/', 'page_main');
 	
 	dispatch('/logout', 'page_auth_logout');
+	
+	dispatch('/change-password', 'page_auth_change_password');
+	dispatch_post('/change-password', 'page_auth_do_change_password');
 
 	dispatch('/admin', 'page_admin_main');
 	dispatch('/admin/users', 'page_admin_user_list');

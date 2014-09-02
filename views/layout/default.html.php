@@ -20,6 +20,8 @@
 				printf(" <a href=\"%s\">%s</a>\n",
 					url_for('admin'), "Go to administration");
 			}
+			printf(" <a href=\"%s\">%s</a>", url_for('/change-password'),
+				"Change your password.");
 			printf("</p>\n");
 		}
 				

@@ -41,6 +41,30 @@ function auth_check_user_and_start_session($user, $password) {
 	return false;
 }
 
+function auth_change_user_password($user, $old_password, $new_password) {
+	$result = db_find_object('check user password prior change',
+		'SELECT password FROM user WHERE uid=:uid',
+		array("uid" => $user));
+	
+	if ($result != null) {
+		if (password_verify($old_password, $result->password)) {
+			db_update_object_from_array('update user password',
+				array(
+					"uid" => $user,
+					"password" => password_hash($new_password, PASSWORD_DEFAULT)
+				),
+				'user',
+				"uid");
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
+	return false;
+}
+
 function auth_check_user_and_continue_session() {
 	assert(auth_is_user_logged_in());
 	

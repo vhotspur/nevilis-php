@@ -1,5 +1,13 @@
 <?php
 
+function v_post($name, $default = null) {
+	if (isset($_POST[$name])) {
+		return $_POST[$name];
+	} else {
+		return $default;
+	}
+}
+
 function flash_format_all() {
 	$settings = array(
 		array("error", "#800"),
