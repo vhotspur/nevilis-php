@@ -14,7 +14,7 @@ function page_assignment_main() {
 	
 	check_assignment_belongs_to_course($assignment_id, $course_id);
 	
-	$info = data_get_assignment_details_for_user($assignment_id, get_current_user());
+	$info = data_get_assignment_details_for_user($assignment_id, auth_get_current_user());
 	if ($info == null) {
 		flash('error', 'Uknown assignment selected.');
 		redirect('/', $course_id);
