@@ -71,6 +71,7 @@ function data_get_assignment_details_for_user($assignment, $user) {
 			afid,
 			name,
 			filename,
+			validation,
 			description
 		FROM
 			assignmentfile

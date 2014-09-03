@@ -83,7 +83,11 @@ function page_assignment_do_upload() {
 			continue;
 		}
 		
-		// TODO: check file type etc.
+		$validated = file_validate($_FILES[$field]['tmp_name'], $f->validation);
+		if ($validated !== true) {
+			$failed_files[] = array($f->name, implode(', ', $validated));
+			continue;
+		}
 		
 		$moved = @move_uploaded_file($_FILES[$field]['tmp_name'], $target_directory . '/' . $f->filename);
 		if ($moved) {
