@@ -20,8 +20,6 @@ function page_assignment_main() {
 		redirect('/', $course_id);
 	}
 	
-	// TODO: display grade + comment
-	
 	set('title', $info->name);
 	set('course_id', $course_id);
 	set('assignment_id', $assignment_id);
