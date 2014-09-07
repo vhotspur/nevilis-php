@@ -61,6 +61,7 @@ done
 
 # Create the files
 mkdir -p dev_files/user1/hw1/
+chmod 0777 -R dev_files/
 convert -size 20x20 xc:blue dev_files/user1/hw1/yyy.png
 
 # Fix permissions
