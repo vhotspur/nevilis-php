@@ -138,3 +138,28 @@ function data_get_assignment_details_for_user($assignment, $user) {
 	return $info;
 }
 
+function data_create_assignment($id, $name, $files, $description) {
+	$assignment = array(
+		"aid" => $id,
+		"name" => $name,
+		"description" => $description
+	);
+	db_create_object_from_array("create new assignment", $assignment, 'assignment');
+	
+	foreach ($files as $f) {
+		$file = array(
+			"filename" => $f["filename"],
+			"assignment" => $id,
+			"name" => $f["name"],
+			"description" => $f["description"],
+			"maxsize" => $f["maxsize"]
+		);
+		if ($f["id"] == 0) {
+			db_create_object_from_array("create file", $file, 'assignmentfile');	
+		} else {
+			$file["afid"] = $f["id"];
+			db_update_object_from_array("update file", $file, 'assignmentfile', 'afid');
+		}
+	}
+}
+

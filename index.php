@@ -57,11 +57,14 @@ if (auth_is_user_logged_in()) {
 
 	dispatch('/admin', 'page_admin_main');
 	dispatch('/admin/users', 'page_admin_user_list');
-	dispatch('/admin/assignments', 'page_admin_assignements_list');
 	dispatch('/admin/users/add', 'page_admin_user_add');
 	dispatch_post('/admin/users/add', 'page_admin_user_create');
 	dispatch('/admin/users/edit/:uid', 'page_admin_user_edit');
 	dispatch_post('/admin/users/edit/:uid', 'page_admin_user_update');
+	dispatch('/admin/assignments', 'page_admin_assignement_list');
+	dispatch('/admin/assignments/add', 'page_admin_assignement_add');
+	dispatch_post('/admin/assignments/add', 'page_admin_assignment_create');
+	
 	
 	dispatch('/:course', 'page_course_main');
 	dispatch('/:course/:assignment', 'page_assignment_main');
