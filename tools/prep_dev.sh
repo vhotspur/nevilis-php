@@ -12,8 +12,8 @@ if [ "$1" == "--force" ]; then
 	rm -rf dev_files
 fi
 
-[ -e "dev_files" ] && exit 1
-[ -e "$DB_FILE" ] && exit 1
+[ -e "dev_files" ] && { echo "dev_files/ already exists"; exit 1; }
+[ -e "$DB_FILE" ] && { echo "$DB_FILE already exists"; exit 1; }
 
 # Prepare the tables
 $SQLITE $DB_FILE <db/schema.sql
