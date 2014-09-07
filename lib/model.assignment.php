@@ -1,5 +1,16 @@
 <?php
 
+function data_get_assignment_list() {
+	return db_find_objects("list of all assignments",
+		"SELECT
+			aid,
+			name,
+			description
+		FROM
+			assignment
+		");
+}
+
 function data_get_assigments_and_grades_for_course($user, $course) {
 	assert(data_is_user_enrolled_to_course($user, $course));
 	
