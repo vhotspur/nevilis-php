@@ -62,7 +62,7 @@ function data_get_assigments_and_grades_for_course($user, $course) {
 	return $assignments;
 }
 
-function data_get_assignment_details_for_user($assignment, $user) {
+function data_get_assignment_details($assignment) {
 	$info = db_find_object("get assignment details",
 		"SELECT
 			assignment.name AS name,
@@ -83,6 +83,7 @@ function data_get_assignment_details_for_user($assignment, $user) {
 			name,
 			filename,
 			validation,
+			maxsize,
 			description
 		FROM
 			assignmentfile
@@ -91,6 +92,16 @@ function data_get_assignment_details_for_user($assignment, $user) {
 		", array("assignment" => $assignment));
 	
 	$info->files = $files;
+	
+	return $info;
+}
+
+function data_get_assignment_details_for_user($assignment, $user) {
+	$info = data_get_assignment_details($assignment);
+	
+	if ($info == null) {
+		return null;
+	}
 	
 	$submitted = db_find_objects("get actually submitted files",
 		"SELECT
@@ -163,3 +174,27 @@ function data_create_assignment($id, $name, $files, $description) {
 	}
 }
 
+function data_update_assignment($id, $name, $files, $description) {
+	$assignment = array(
+			"aid" => $id,
+			"name" => $name,
+			"description" => $description
+	);
+	db_update_object_from_array("update assignment", $assignment, "assignment", "aid");
+	
+	foreach ($files as $f) {
+		$file = array(
+				"filename" => $f["filename"],
+				"assignment" => $id,
+				"name" => $f["name"],
+				"description" => $f["description"],
+				"maxsize" => $f["maxsize"]
+		);
+		if ($f["id"] == 0) {
+			db_create_object_from_array("create file", $file, 'assignmentfile');
+		} else {
+			$file["afid"] = $f["id"];
+			db_update_object_from_array("update file", $file, 'assignmentfile', 'afid');
+		}
+	}
+}

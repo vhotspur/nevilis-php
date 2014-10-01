@@ -33,3 +33,13 @@ function link_to($params = null) {
 
     return "<a href=\"$url\">$name</a>";
 }
+
+function make_object($array) {
+	$obj = new stdClass();
+	
+	foreach ($array as $key => $value) {
+		$obj->$key = $value;
+	}
+	
+	return $obj;
+}

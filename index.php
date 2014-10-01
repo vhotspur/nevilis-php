@@ -64,6 +64,8 @@ if (auth_is_user_logged_in()) {
 	dispatch('/admin/assignments', 'page_admin_assignement_list');
 	dispatch('/admin/assignments/add', 'page_admin_assignement_add');
 	dispatch_post('/admin/assignments/add', 'page_admin_assignment_create');
+	dispatch('/admin/assignments/edit/:aid', 'page_admin_assignment_edit');
+	dispatch_post('/admin/assignments/edit/:aid', 'page_admin_assignment_update');
 	
 	
 	dispatch('/:course', 'page_course_main');
