@@ -6,7 +6,7 @@ function page_admin_grade_main() {
 	return html('admin/grade_main.html.php');
 }
 
-function page_admin_grade_edit_whole_course() {
+function prepare_grades_for_course() {
 	$cid = params('cid');
 	$info = data_get_course_details($cid);
 	if ($info == null) {
@@ -35,9 +35,19 @@ function page_admin_grade_edit_whole_course() {
 	set('title', 'Grades for ' . $info->name);
 	set('assignments', $assignments);
 	set('users', $users);
-	
+}
+
+function page_admin_grade_edit_whole_course() {
+	prepare_grades_for_course();
 	
 	return html('admin/grade_whole_course.html.php');
+}
+
+function page_admin_printable_grades_whole_course() {
+	layout('layout/empty.html.php');
+	prepare_grades_for_course();
+	
+	return html('admin/grade_whole_course_print.html.php');
 }
 
 function page_admin_grade_whole_course() {

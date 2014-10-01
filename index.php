@@ -84,6 +84,7 @@ if (auth_is_user_logged_in()) {
 	dispatch_post('/admin/assign/:cid', 'page_admin_assign_to_course');
 	
 	dispatch('/admin/grade', 'page_admin_grade_main');
+	dispatch('/admin/grade/:cid/print', 'page_admin_printable_grades_whole_course');
 	dispatch('/admin/grade/:cid', 'page_admin_grade_edit_whole_course');
 	dispatch_post('/admin/grade/:cid', 'page_admin_grade_whole_course');
 	
