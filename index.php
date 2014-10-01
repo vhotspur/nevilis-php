@@ -69,6 +69,10 @@ if (auth_is_user_logged_in()) {
 	dispatch('/admin/courses/edit/:cid', 'page_admin_course_edit');
 	dispatch_post('/admin/courses/edit/:cid', 'page_admin_course_update');
 	
+	dispatch('/admin/enroll', 'page_admin_enroll_main');
+	dispatch('/admin/enroll/:cid', 'page_admin_enroll_edit');
+	dispatch_post('/admin/enroll/:cid', 'page_admin_enroll_to_course');
+	
 	dispatch('/admin/assignments', 'page_admin_assignement_list');
 	dispatch('/admin/assignments/add', 'page_admin_assignement_add');
 	dispatch_post('/admin/assignments/add', 'page_admin_assignment_create');

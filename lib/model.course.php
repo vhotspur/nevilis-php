@@ -43,6 +43,17 @@ function data_get_course_details($id) {
 		", array("id" => $id));
 }
 
+function data_get_enrolled_users($course) {
+	return db_find_objects("check user is enrolled to a course",
+		"SELECT
+			user AS uid
+		FROM
+			courseusers
+		WHERE
+			course = :course
+		", array("course" => $course));
+}
+
 function data_is_user_enrolled_to_course($user, $course) {
 	$obj = db_find_objects("check user is enrolled to a course",
 		"SELECT
@@ -58,6 +69,18 @@ function data_is_user_enrolled_to_course($user, $course) {
 	));
 	
 	return count($obj) == 1;
+}
+
+function data_enroll_users($course, $users) {
+	db_delete_objects("destroy existing enrollment", "courseusers",
+		array("course" => $course));
+	foreach ($users as $u) {
+		$obj = array(
+			"user" => $u,
+			"course" => $course
+		);
+		db_create_object_from_array("create enrollment", $obj, "courseusers");
+	}
 }
 
 function data_create_course($cid, $name) {
