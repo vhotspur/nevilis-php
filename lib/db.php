@@ -97,3 +97,19 @@ function db_update_object_from_array($description, $object_array, $table, $id_co
 	
 	db_log_query($description, $sql, $object_array, $result);
 }
+
+function db_delete_objects($description, $table, $conditions) {
+	$comparisons = array_map('db_prepare_bind_value_for_update', array_keys($conditions));
+	$sql = sprintf("DELETE FROM `%s` WHERE %s",
+			$table, implode(' AND ', $comparisons));
+	
+	$conn = option('db_conn');
+	$stmt = $conn->prepare($sql);
+	foreach ($conditions as $key => $value) {
+		$stmt->bindValue(':' . $key, $value);
+	}
+	
+	$result = $stmt->execute();
+	
+	db_log_query($description, $sql, $conditions, $result);
+}
