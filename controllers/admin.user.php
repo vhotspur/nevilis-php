@@ -61,3 +61,35 @@ function page_admin_user_update() {
 	flash('info', 'User succesfully updated.');
 	redirect('/admin/users');
 }
+
+function page_admin_user_reset_password_select() {
+	$all_users = data_get_user_list();
+	
+	set('title', 'Password reset');
+	set('users', $all_users);
+
+	return html('admin/user_reset_password.html.php');
+}
+
+function page_admin_user_reset_password() {
+	$all_users = data_get_user_list();
+	
+	$reset_password_for = array();
+	foreach ($all_users as $u) {
+		if (isset($_POST['user_' . $u->uid])) {
+			$password = auth_generate_password();
+			$reset_password_for[] = array(
+				"uid" => $u->uid,
+				"name" => $u->name,
+				"password" => $password
+			);
+			auth_reset_user_password($u->uid, $password);
+		}
+	}
+	
+	if (count($reset_password_for) > 0) {
+		flash('reset_passwords', $reset_password_for);
+		flash('info', 'Passwords were reset.');
+	}
+	redirect_to('admin', 'users');
+}

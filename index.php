@@ -58,6 +58,8 @@ if (auth_is_user_logged_in()) {
 	dispatch('/admin', 'page_admin_main');
 	
 	dispatch('/admin/users', 'page_admin_user_list');
+	dispatch('/admin/users/reset-password', 'page_admin_user_reset_password_select');
+	dispatch_post('/admin/users/reset-password', 'page_admin_user_reset_password');
 	dispatch('/admin/users/add', 'page_admin_user_add');
 	dispatch_post('/admin/users/add', 'page_admin_user_create');
 	dispatch('/admin/users/edit/:uid', 'page_admin_user_edit');

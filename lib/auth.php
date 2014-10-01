@@ -65,6 +65,15 @@ function auth_change_user_password($user, $old_password, $new_password) {
 	return false;
 }
 
+function auth_reset_user_password($user, $new_password) {
+	db_update_object_from_array('reset user password',
+		array(
+			"uid" => $user,
+			"password" => password_hash($new_password, PASSWORD_DEFAULT)
+		),
+		'user', "uid");
+}
+
 function auth_check_user_and_continue_session() {
 	assert(auth_is_user_logged_in());
 	
@@ -86,4 +95,22 @@ function auth_check_user_and_continue_session() {
 function auth_close_session() {
 	unset($_SESSION['user']);
 	unset($_SESSION['user_roles']);
+}
+
+function auth_generate_password($min_length = 8, $max_length = 10) {
+	list($usec, $sec) = explode(' ', microtime());
+	mt_srand((float) $sec + ((float) $usec * 100000));
+	
+	$length = mt_rand($min_length, $max_length);
+	
+	$chars = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPRSTUVWXYZ23456789';
+	$chars_count = strlen($chars);
+	
+	$result = "";
+	for ($i = 0; $i < $length; $i++) {
+		$idx = mt_rand(0, $chars_count - 1);
+		$result .= substr($chars, $idx, 1);	
+	}
+	
+	return $result;
 }
