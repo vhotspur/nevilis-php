@@ -60,7 +60,8 @@ function data_get_assigments_and_grades_for_course($user, $course) {
 			JOIN courseassignment ON courseassignment.assignment=grade.assignment
 		WHERE
 			courseassignment.course=:course
-		", array("course" => $course));
+			AND grade.user=:user
+		", array("course" => $course, "user" => $user));
 	
 	foreach ($assignments as $a) {
 		$a->grade = null;
