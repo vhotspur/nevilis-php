@@ -7,6 +7,7 @@ foreach ($users as $u) {
 		<label>
 			<input type="checkbox" name="user_<?php echo h($u->uid); ?>" <?php if ($u->enrolled) { echo 'checked="checked"'; } ?> />
 			<?php echo h($u->name); ?>
+			[<?php echo h($u->uid); ?>]
 		</label>
 	</li>
 <?php
