@@ -56,11 +56,19 @@ if (auth_is_user_logged_in()) {
 	dispatch_post('/change-password', 'page_auth_do_change_password');
 
 	dispatch('/admin', 'page_admin_main');
+	
 	dispatch('/admin/users', 'page_admin_user_list');
 	dispatch('/admin/users/add', 'page_admin_user_add');
 	dispatch_post('/admin/users/add', 'page_admin_user_create');
 	dispatch('/admin/users/edit/:uid', 'page_admin_user_edit');
 	dispatch_post('/admin/users/edit/:uid', 'page_admin_user_update');
+	
+	dispatch('/admin/courses', 'page_admin_course_list');
+	dispatch('/admin/courses/add', 'page_admin_course_add');
+	dispatch_post('/admin/courses/add', 'page_admin_course_create');
+	dispatch('/admin/courses/edit/:cid', 'page_admin_course_edit');
+	dispatch_post('/admin/courses/edit/:cid', 'page_admin_course_update');
+	
 	dispatch('/admin/assignments', 'page_admin_assignement_list');
 	dispatch('/admin/assignments/add', 'page_admin_assignement_add');
 	dispatch_post('/admin/assignments/add', 'page_admin_assignment_create');
