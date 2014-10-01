@@ -15,7 +15,7 @@ function page_admin_enroll_edit() {
 	}
 	
 	$all_users = data_get_user_list();
-	$enrolled_users_tmp = data_get_enrolled_users($cid);
+	$enrolled_users_tmp = data_get_enrolled_users_uids_only($cid);
 	$enrolled_users = array();
 	foreach ($enrolled_users_tmp as $u) {
 		$enrolled_users[] = $u->uid;

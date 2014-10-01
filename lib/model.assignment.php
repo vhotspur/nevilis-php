@@ -214,3 +214,21 @@ function data_update_assignment($id, $name, $files, $description) {
 		}
 	}
 }
+
+function data_update_grades($grades) {
+	foreach ($grades as $grade) {
+		db_delete_objects("delete previous grade", 'grade', array(
+			"user" => $grade["user"],
+			"assignment" => $grade["assignment"]));
+		
+		$empty = !$grade["locked"]
+			&& ($grade["comment"] == "")
+			&& ($grade["grade"] == "");
+		
+		if ($empty) {
+			continue;
+		}
+		
+		db_create_object_from_array("add a grade", $grade, 'grade');
+	}
+}

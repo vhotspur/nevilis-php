@@ -83,6 +83,10 @@ if (auth_is_user_logged_in()) {
 	dispatch('/admin/assign/:cid', 'page_admin_assign_edit');
 	dispatch_post('/admin/assign/:cid', 'page_admin_assign_to_course');
 	
+	dispatch('/admin/grade', 'page_admin_grade_main');
+	dispatch('/admin/grade/:cid', 'page_admin_grade_edit_whole_course');
+	dispatch_post('/admin/grade/:cid', 'page_admin_grade_whole_course');
+	
 	dispatch('/:course', 'page_course_main');
 	dispatch('/:course/:assignment', 'page_assignment_main');
 	dispatch_post('/:course/:assignment/upload', 'page_assignment_do_upload');

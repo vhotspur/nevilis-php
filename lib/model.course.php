@@ -43,7 +43,7 @@ function data_get_course_details($id) {
 		", array("id" => $id));
 }
 
-function data_get_enrolled_users($course) {
+function data_get_enrolled_users_uids_only($course) {
 	return db_find_objects("check user is enrolled to a course",
 		"SELECT
 			user AS uid
@@ -51,6 +51,20 @@ function data_get_enrolled_users($course) {
 			courseusers
 		WHERE
 			course = :course
+		", array("course" => $course));
+}
+
+function data_get_enrolled_users($course) {
+	return db_find_objects("check user is enrolled to a course",
+		"SELECT
+			user.uid AS uid,
+			user.name AS name
+		FROM
+			courseusers
+			JOIN user
+		WHERE
+			user.uid = courseusers.user
+			AND course = :course
 		", array("course" => $course));
 }
 
