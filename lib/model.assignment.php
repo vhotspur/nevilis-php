@@ -78,6 +78,22 @@ function data_get_assigments_and_grades_for_course($user, $course) {
 	return $assignments;
 }
 
+function data_get_assignment_files($assignment) {
+	return db_find_objects("get assignment files",
+		"SELECT
+			afid,
+			name,
+			filename,
+			validation,
+			maxsize,
+			description
+		FROM
+			assignmentfile
+		WHERE
+			assignment = :assignment
+		", array("assignment" => $assignment)); 
+}
+
 function data_get_assignment_details($assignment) {
 	$info = db_find_object("get assignment details",
 		"SELECT
@@ -93,21 +109,7 @@ function data_get_assignment_details($assignment) {
 		return null;
 	}
 	
-	$files = db_find_objects("get assignment files",
-		"SELECT
-			afid,
-			name,
-			filename,
-			validation,
-			maxsize,
-			description
-		FROM
-			assignmentfile
-		WHERE
-			assignment = :assignment
-		", array("assignment" => $assignment));
-	
-	$info->files = $files;
+	$info->files = data_get_assignment_files($assignment);
 	
 	return $info;
 }
