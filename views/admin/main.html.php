@@ -17,4 +17,7 @@
 	<li>
 		<a href="<?php echo url_for('admin', 'grade'); ?>">Grade the assignments</a>
 	</li>
+	<li>
+		<a href="<?php echo url_for('admin', 'download'); ?>">Mass solution download</a>
+	</li>
 </ul>

@@ -88,6 +88,13 @@ if (auth_is_user_logged_in()) {
 	dispatch('/admin/grade/:cid', 'page_admin_grade_edit_whole_course');
 	dispatch_post('/admin/grade/:cid', 'page_admin_grade_whole_course');
 	
+	dispatch('/admin/download', 'page_admin_download_main');
+	dispatch('/admin/download/:cid', 'page_admin_download_from_course');
+	dispatch('/admin/download/:cid/single/:uid/:aid', 'page_admin_download_single_solution');
+	dispatch('/admin/download/:cid/user/:uid', 'page_admin_download_all_user_solutions');
+	dispatch('/admin/download/:cid/assignment/:aid', 'page_admin_download_all_assignment_solutions');
+	dispatch('/admin/download/:cid/all', 'page_admin_download_all_solutions');
+	
 	dispatch('/:course', 'page_course_main');
 	dispatch('/:course/:assignment', 'page_assignment_main');
 	dispatch_post('/:course/:assignment/upload', 'page_assignment_do_upload');
