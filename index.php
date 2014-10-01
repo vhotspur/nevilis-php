@@ -79,6 +79,9 @@ if (auth_is_user_logged_in()) {
 	dispatch('/admin/assignments/edit/:aid', 'page_admin_assignment_edit');
 	dispatch_post('/admin/assignments/edit/:aid', 'page_admin_assignment_update');
 	
+	dispatch('/admin/assign', 'page_admin_assign_main');
+	dispatch('/admin/assign/:cid', 'page_admin_assign_edit');
+	dispatch_post('/admin/assign/:cid', 'page_admin_assign_to_course');
 	
 	dispatch('/:course', 'page_course_main');
 	dispatch('/:course/:assignment', 'page_assignment_main');

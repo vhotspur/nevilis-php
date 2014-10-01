@@ -11,6 +11,21 @@ function data_get_assignment_list() {
 		");
 }
 
+function data_get_assignments_for_course($course) {
+	return db_find_objects("active assignments in a course",
+		"SELECT
+			aid,
+			name,
+			description
+		FROM
+			assignment
+			JOIN courseassignment
+		WHERE
+			assignment.aid = courseassignment.assignment
+			AND course = :course
+		", array("course" => $course));
+}
+
 function data_get_assigments_and_grades_for_course($user, $course) {
 	assert(data_is_user_enrolled_to_course($user, $course));
 	

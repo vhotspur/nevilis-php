@@ -11,4 +11,7 @@
 	<li>
 		<a href="<?php echo url_for('admin', 'assignments'); ?>">Assignments</a>
 	</li>
+	<li>
+		<a href="<?php echo url_for('admin', 'assign'); ?>">Assign tasks to courses</a>
+	</li>
 </ul>

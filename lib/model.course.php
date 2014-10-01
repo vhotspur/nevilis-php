@@ -83,6 +83,18 @@ function data_enroll_users($course, $users) {
 	}
 }
 
+function data_assign_to_course($course, $assignments) {
+	db_delete_objects("destroy existing assignments", "courseassignment",
+		array("course" => $course));
+	foreach ($assignments as $a) {
+		$obj = array(
+				"assignment" => $a,
+				"course" => $course
+		);
+		db_create_object_from_array("assign assignment", $obj, "courseassignment");
+	}
+}
+
 function data_create_course($cid, $name) {
 	$course = array(
 			"cid" => $cid,
