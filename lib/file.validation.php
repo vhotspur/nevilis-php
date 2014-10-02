@@ -8,10 +8,15 @@ $GLOBALS['FILE_VALIDATORS'] = array(
 	)
 );
 
+function file_validation_get_ids() {
+	global $FILE_VALIDATORS;
+	
+	return array_keys($FILE_VALIDATORS);
+}
+
 function file_validate($filename, $validators) {
 	global $FILE_VALIDATORS;
 	
-	$validators = explode(',', $validators);
 	$errors = array();
 	
 	foreach ($validators as $validator) {

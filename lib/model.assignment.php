@@ -79,7 +79,7 @@ function data_get_assigments_and_grades_for_course($user, $course) {
 }
 
 function data_get_assignment_files($assignment) {
-	return db_find_objects("get assignment files",
+	$files = db_find_objects("get assignment files",
 		"SELECT
 			afid,
 			name,
@@ -91,7 +91,11 @@ function data_get_assignment_files($assignment) {
 			assignmentfile
 		WHERE
 			assignment = :assignment
-		", array("assignment" => $assignment)); 
+		", array("assignment" => $assignment));
+	foreach ($files as &$f) {
+		$f->validation = explode(",", $f->validation);
+	}
+	return $files;
 }
 
 function data_get_assignment_details($assignment) {
@@ -181,7 +185,8 @@ function data_create_assignment($id, $name, $files, $description) {
 			"assignment" => $id,
 			"name" => $f["name"],
 			"description" => $f["description"],
-			"maxsize" => $f["maxsize"]
+			"maxsize" => $f["maxsize"],
+			"validation" => implode(',', $f["validation"]),
 		);
 		if ($f["id"] == 0) {
 			db_create_object_from_array("create file", $file, 'assignmentfile');	
@@ -206,7 +211,8 @@ function data_update_assignment($id, $name, $files, $description) {
 				"assignment" => $id,
 				"name" => $f["name"],
 				"description" => $f["description"],
-				"maxsize" => $f["maxsize"]
+				"maxsize" => $f["maxsize"],
+				"validation" => implode(',', $f["validation"]),
 		);
 		if ($f["id"] == 0) {
 			db_create_object_from_array("create file", $file, 'assignmentfile');

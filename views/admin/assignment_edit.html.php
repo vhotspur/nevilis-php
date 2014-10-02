@@ -55,7 +55,24 @@ for ($file_index = 0; $file_index < $files_count; $file_index++) {
 				<dt>Maximum file size (KB)</dt>
 				<dd><input type="text" name="file_<?php echo $file_index; ?>_maxsize" value="<?php echo h($ff->maxsize); ?>" /></dd>
 				<dt>Content validator</dt>
-				<dd>TODO</dd>
+				<dd><ul>
+				<?php
+				foreach ($GLOBALS['FILE_VALIDATORS'] as $validator_id => $validator) {
+					$is_used = array_search($validator_id, $ff->validation);
+					$checked = $is_used === FALSE ? "" : 'checked="checked"';
+					$field = sprintf("file_%d_validator_%s",
+						$file_index, $validator_id);
+					?>
+					<li>
+						<label>
+							<input type="checkbox" name="<?php echo $field; ?>" <?php echo $checked; ?> />
+							<?php echo h($validator["name"]); ?>
+						</label>
+					</li>
+					<?php
+				}
+				?>
+				</ul></dd>
 			</dl>
 		</dd>
 <?php
