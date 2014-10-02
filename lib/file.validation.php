@@ -5,7 +5,12 @@ $GLOBALS['FILE_VALIDATORS'] = array(
 		"name" => "JPEG image",
 		"error" => "not a JPEG image",
 		"validator" => "file_validate_jpeg"
-	)
+	),
+	"png" => array(
+		"name" => "PNG image",
+		"error" => "not a PNG image",
+		"validator" => "file_validate_png"
+	),
 );
 
 function file_validation_get_ids() {
@@ -78,5 +83,18 @@ function file_validate_jpeg($filename) {
 	return true;
 }
 
+function file_validate_png($filename) {
+	$png_header = array(-1, 'P', 'N', 'G');
+	if (!file_validate_first_bytes($filename, $png_header)) {
+		return false;
+	}
 
+	$im = @imagecreatefrompng($filename);
+	if ($im === false) {
+		return false;
+	}
+	imagedestroy($im);
+
+	return true;
+}
 
