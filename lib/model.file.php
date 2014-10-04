@@ -30,3 +30,10 @@ function data_add_solution_file($file_id, $uploader) {
 		array("user" => $uploader, "file" => $file_id),
 		"submittedfile");
 }
+
+function data_update_solution_file_timestamp($file_id, $uploader) {
+	db_update_object_from_array("update file timestamp",
+		array("user" => $uploader, "file" => $file_id,
+			"upload_date" => date('Y-m-d H:i:s')),
+		"submittedfile", array("user", "file"));
+}

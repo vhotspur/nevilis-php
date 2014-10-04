@@ -15,12 +15,15 @@ CREATE TABLE `assignment` (
 );
 CREATE TABLE `courseassignment` (
 	`course`	TEXT,
-	`assignment`	TEXT
+	`assignment`	TEXT,
+	`deadline`	DATETIME,
+	`deadline_noupload`	DATETIME
 );
 CREATE TABLE "submittedfile" (
 	`sfid`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`user`	TEXT NOT NULL,
-	`file`	INTEGER NOT NULL
+	`file`	INTEGER NOT NULL,
+	`upload_date` DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 CREATE TABLE "grade" (
 	`user`	TEXT,

@@ -8,6 +8,8 @@
 		?>
 		<th>
 			<?php echo h($a->name); ?>
+			<br />
+			<?php echo h($a->deadline); ?>
 		</th>
 		<?php
 	} 
@@ -18,7 +20,7 @@ foreach ($users as $u) {
 ?>
 <tr>
 	<th>
-		<?php echo h($u->name); ?> [<?php echo h($u->uid); ?>]
+		<?php echo h($u->name); ?><br />[<?php echo h($u->uid); ?>]
 	</th>
 	<?php
 	foreach ($assignments as $a) {
@@ -29,6 +31,8 @@ foreach ($users as $u) {
 		$locked_checked = $info->locked ? 'checked="checked"' : '';
 		?>
 		<td>
+			Last upload: <?php echo h($info->last_upload); ?>
+			<br />
 			<input type="text" name="<?php echo h($grade_field); ?>" value="<?php echo h($info->grade); ?>" size="3" />
 			<input type="text" name="<?php echo h($comment_field); ?>" value="<?php echo h($info->comment); ?>" size="10" />
 			<input type="checkbox" name="<?php echo h($locked_field); ?>" <?php echo $locked_checked; ?> />

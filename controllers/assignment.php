@@ -1,5 +1,18 @@
 <?php
 
+function can_upload($locked, $deadline_noupload) {
+	if ($locked) {
+		return false;
+	}
+	
+	if ($deadline_noupload == NULL) {
+		return true;
+	}
+	
+	$deadline_unix = strtotime($deadline_noupload);
+	return $deadline_unix > time(); 
+}
+
 function page_assignment_main() {
 	$course_id = params('course');
 	$assignment_id = params('assignment');
@@ -14,7 +27,7 @@ function page_assignment_main() {
 	
 	check_assignment_belongs_to_course($assignment_id, $course_id);
 	
-	$info = data_get_assignment_details_for_user($assignment_id, auth_get_current_user());
+	$info = data_get_assignment_details_for_user_in_course($assignment_id, $course_id, auth_get_current_user());
 	if ($info == null) {
 		flash('error', 'Uknown assignment selected.');
 		redirect('/', $course_id);
@@ -27,9 +40,9 @@ function page_assignment_main() {
 	set('description', $info->description);
 	set('files', $info->files);
 	set('grade', $info->grade);
-	set('locked', $info->locked);
+	set('can_upload', can_upload($info->locked, $info->deadline_noupload));
 	
-    return html('assignment/index.html.php');
+	return html('assignment/index.html.php');
 }
 
 function page_assignment_do_upload() {
@@ -40,14 +53,14 @@ function page_assignment_do_upload() {
 	check_user_can_view_course($course_id);
 	check_assignment_belongs_to_course($assignment_id, $course_id);
 	
-	$info = data_get_assignment_details_for_user($assignment_id, auth_get_current_user());
+	$info = data_get_assignment_details_for_user_in_course($assignment_id, $course_id, auth_get_current_user());
 	if ($info == null) {
 		flash('error', 'Uknown assignment selected.');
 		redirect_to($course_id);
 	}
 	
-	if ($info->locked) {
-		flash('error', 'File uploading is not possible at the moment.');
+	if (!can_upload($info->locked, $info->deadline_noupload)) {
+		flash('error', 'File uploading is prohibited at the moment.');
 		redirect_to($course_id, $assignment_id);
 	}
 	
@@ -92,6 +105,7 @@ function page_assignment_do_upload() {
 			if (!$f->submitted) {
 				data_add_solution_file($f->afid, auth_get_current_user());
 			}
+			data_update_solution_file_timestamp($f->afid, auth_get_current_user());
 			$okay_files[] = $f->name;
 		} else {
 			$failed_files[] = array($f->name, "failed to move to permanent storage");

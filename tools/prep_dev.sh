@@ -37,13 +37,14 @@ INSERT INTO "assignmentfile" VALUES(2,'yyy.png','hw1','Some PNG','First assignme
 INSERT INTO "assignmentfile" VALUES(3,'zzz.jpg','hw2','Two','Another picture',45000,'jpeg');
 INSERT INTO "assignmentfile" VALUES(4,'aaa.jpg','hw3','Lorem Ipsum','Another picture',45000,'jpeg');
 
-INSERT INTO "courseassignment" VALUES('c1','hw1');
-INSERT INTO "courseassignment" VALUES('c1','hw2');
-INSERT INTO "courseassignment" VALUES('c1','hw3');
+-- Deadlines will be fixed later
+INSERT INTO "courseassignment" VALUES('c1','hw1', NULL, NULL);
+INSERT INTO "courseassignment" VALUES('c1','hw2', NULL, NULL);
+INSERT INTO "courseassignment" VALUES('c1','hw3', NULL, NULL);
 
-INSERT INTO "submittedfile" VALUES(1,'user1',2);
-INSERT INTO "submittedfile" VALUES(2,'user1',1);
-INSERT INTO "submittedfile" VALUES(3,'user1',3);
+INSERT INTO "submittedfile" VALUES(1,'user1',2, NULL);
+INSERT INTO "submittedfile" VALUES(2,'user1',1, NULL);
+INSERT INTO "submittedfile" VALUES(3,'user1',3, NULL);
 INSERT INTO "grade" VALUES('user1','hw1',2,1,'Not bad, really :-).');
 INSERT INTO "grade" VALUES('user1','hw2',null,0,'Fix this!');
 
@@ -57,6 +58,17 @@ EOF_DEV_DATA
 for user in admin user1; do
 	echo '<?php printf("UPDATE user SET password=\"%s\" WHERE uid=\"'"$user"'\";\n", password_hash("1234", PASSWORD_DEFAULT));' \
 		| $PHP | $SQLITE $DB_FILE
+done
+
+# Fix the deadlines
+for hw in "hw1 -2 -1" "hw2 -1 +1" "hw3 +1 +2"; do
+	hw_id=`echo $hw | ( read a b c; echo $a )`
+	hw_deadline=`echo $hw | ( read a b c; echo $b )`
+	hw_deadline_noupload=`echo $hw | ( read a b c; echo $c )`
+	hw_deadline=`date -d "$hw_deadline week" '+%Y-%m-%d %H:%M'`
+	hw_deadline_noupload=`date -d "$hw_deadline_noupload week" '+%Y-%m-%d %H:%M'`
+	echo "UPDATE courseassignment SET deadline=\"$hw_deadline\", deadline_noupload=\"$hw_deadline_noupload\" WHERE assignment=\"$hw_id\";" \
+		| $SQLITE $DB_FILE
 done
 
 # Create the files

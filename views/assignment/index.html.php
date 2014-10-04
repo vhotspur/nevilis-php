@@ -6,7 +6,7 @@
 echo h($description);
 
 if ($grade != null) {
-	printf("<h2>Grade: %d</h2>", $grade->grade);
+	printf("<h2>Grade: %s</h2>", v($grade->grade, '--'));
 	if ($grade->comment != "") {
 		printf("<p>%s</p>", h($grade->comment));
 	}
@@ -32,16 +32,16 @@ if (count($files) > 0) {
 		printf("</p>\n");
 		
 		printf("<p>");
-		if ($locked) {
-			printf("<i>%s</i>", "File uploading not possible.");
+		if ($can_upload) {
+			printf("<input type=\"file\" name=\"f%d\" />", $f->afid);			
 		} else {
-			printf("<input type=\"file\" name=\"f%d\" />", $f->afid);
+			printf("<i>%s</i>", "File uploading not possible.");
 		}
 		printf("</p>\n");
 		printf("</fieldset>\n");
 	} ?>
-	<?php if (!$locked) { ?>
-	<input type="submit" value="Upload files..." />
+	<?php if ($can_upload) { ?>
+		<input type="submit" value="Upload files..." />
 	<?php } ?>
 	</form>
 <?php

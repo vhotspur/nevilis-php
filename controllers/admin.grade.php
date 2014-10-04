@@ -27,6 +27,22 @@ function prepare_grades_for_course() {
 					"comment" => ""		
 				));
 			}
+			
+			// find the timestamp of last uploaded file
+			$last_upload = null;
+			$highest_timestamp = 0;
+			foreach ($grade_info->files as $f) {
+				if ($f->submitted) {
+					$uploaded = strtotime($f->upload_date);
+					if ($uploaded > $highest_timestamp) {
+						$highest_timestamp = $uploaded;
+					}
+				}
+			}
+			if ($highest_timestamp > 0) {
+				$last_upload = date('Y-m-d H:i:s', $highest_timestamp);
+			}
+			$grade_info->grade->last_upload = $last_upload;
 			$u->assignments[ $a->aid ] = $grade_info->grade;
 		}
 	}

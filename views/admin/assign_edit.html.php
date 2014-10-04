@@ -3,6 +3,8 @@
 <tr>
 	<th>Active</th>
 	<th>Assignment title</th>
+	<th>Deadline</th>
+	<th>Deadline (disable upload)</th>
 </tr>
 <?php
 foreach ($assignments as $a) {
@@ -13,6 +15,12 @@ foreach ($assignments as $a) {
 	</td>
 	<td>
 		<?php echo h($a->name); ?>
+	</td>
+	<td>
+		<input type="text" name="assignment_<?php echo h($a->aid); ?>_deadline" value="<?php echo h($a->deadline); ?>" /> 
+	</td>
+	<td>
+		<input type="text" name="assignment_<?php echo h($a->aid); ?>_deadline_noupload" value="<?php echo h($a->deadline_noupload); ?>" />
 	</td>
 </tr>
 <?php

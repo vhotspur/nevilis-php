@@ -16,6 +16,8 @@ function data_get_assignments_for_course($course) {
 		"SELECT
 			aid,
 			name,
+			deadline,
+			deadline_noupload,
 			description
 		FROM
 			assignment
@@ -34,6 +36,7 @@ function data_get_assigments_and_grades_for_course($user, $course) {
 			aid,
 			assignment.name AS name,
 			assignment.description AS description,
+			courseassignment.deadline AS deadline,
 			COUNT(afid) AS filecount
 		FROM
 			assignment
@@ -118,6 +121,34 @@ function data_get_assignment_details($assignment) {
 	return $info;
 }
 
+function data_get_assignment_details_for_user_in_course($assignment, $course, $user) {
+	$info = data_get_assignment_details_for_user($assignment, $user);
+	
+	if ($info == null) {
+		return null;
+	}
+	
+	$deadlines = db_find_object("get assignment deadlines",
+		"SELECT
+			deadline,
+			deadline_noupload
+		FROM
+			courseassignment
+		WHERE
+			assignment = :assignment
+			AND course = :course
+		", array("assignment" => $assignment, "course" => $course));
+	
+	if ($deadlines == null) {
+		return null;
+	}
+	
+	$info->deadline = $deadlines->deadline;
+	$info->deadline_noupload = $deadlines->deadline_noupload;
+	
+	return $info;
+}
+
 function data_get_assignment_details_for_user($assignment, $user) {
 	$info = data_get_assignment_details($assignment);
 	
@@ -128,6 +159,7 @@ function data_get_assignment_details_for_user($assignment, $user) {
 	$submitted = db_find_objects("get actually submitted files",
 		"SELECT
 			sfid,
+			upload_date,
 			afid
 		FROM
 			submittedfile
@@ -144,6 +176,7 @@ function data_get_assignment_details_for_user($assignment, $user) {
 			if ($s->afid == $f->afid) {
 				$f->submitted = true;
 				$f->submitted_id = $s->sfid;
+				$f->upload_date = $s->upload_date;
 				break;
 			}
 		}
