@@ -45,6 +45,10 @@ class emptyglass_transformer {
 			"regexp" => '%_(.*)_%',
 			"top" => true,
 		),
+		"checked" => array(
+			"regexp" => '%checked ([^%]+)%',
+			"top" => true
+		),
 		"comment" => array(
 			"regexp" => '%comment [^%]*%',
 			"top" => true,
@@ -114,6 +118,11 @@ class emptyglass_transformer {
 	private function process_url() {
 		$url = $this->expect_token("url");
 		$this->add_php_code('echo %s(%s);', $this->url_func, $url["parts"][0]);
+	}
+	
+	private function process_checked() {
+		$checked = $this->expect_token("checked");
+		$this->add_php_code('if (%s) { echo "checked=\"checked\""; }', $checked["parts"][0]);
 	}
 	
 	private function process_if() {
