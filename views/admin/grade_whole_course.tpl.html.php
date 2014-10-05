@@ -1,27 +1,15 @@
-<form method="post" action="<?php echo url_for('admin', 'grade', $cid); ?>">
+<form method="post" action="%url('admin', 'grade', $cid)%">
 
 <table border="1">
 <tr>
-	<th>User</th>
-	<?php
-	foreach ($assignments as $a) {
-		?>
-		<th>
-			<?php echo h($a->name); ?>
-			<br />
-			<?php echo h($a->deadline); ?>
-		</th>
-		<?php
-	} 
-	?>
+	<th>%_User_%</th>
+	%foreach $assignments $a%
+		<th>{$a->name/h}<br />{$a->deadline/h}</th>
+	%endforeach%
 </tr>
-<?php
-foreach ($users as $u) {
-?>
+%foreach $users $u%
 <tr>
-	<th>
-		<?php echo h($u->name); ?><br />[<?php echo h($u->uid); ?>]
-	</th>
+	<th>{$u->name/h} [{$u->uid/h}]</th>
 	<?php
 	foreach ($assignments as $a) {
 		$info = $u->assignments[$a->aid];
@@ -41,12 +29,9 @@ foreach ($users as $u) {
 	} 
 	?>
 </tr>
-<?php 
-}
-?>
+%endforeach%
 </table>
-
 <p>
-	<input type="submit" value="Update" />
+	<input type="submit" value="%_Update_%" />
 </p>
 </form>

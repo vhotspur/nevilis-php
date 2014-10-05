@@ -1,33 +1,18 @@
-<p>
-	<a href="<?php echo url_for('admin', 'assignments'); ?>">Back to list of assignments</a>
-</p>
+<form method="post" action="%if $aid === null%%url('admin', 'assignments', 'add')%%else%%url('admin', 'assignments', 'edit', $aid)%%endif%">
+<dl>
+<dt>%_Assignment id (part or URL)_%</dt>
+	<dd>
+	%if $aid === null%
+		<input type="text" name="aid" />
+	%else%
+		<b>{$aid/h}</b> (%_cannot be changed_%)
+	%endif%
+	</dd>
+<dt>%_Name_%</dt>
+	<dd><input type="text" name="name" value="{$name/h}" /></dd>
+<dt>Description</dt>
+	<dd><textarea name="description">{$description/h}</textarea>
 
-<form method="post" action="<?php
- 	if ($aid === null) {
-		echo url_for('admin', 'assignments', 'add');
-	} else {
- 		echo url_for('admin', 'assignments', 'edit', $aid);
-	}
-?>">
-	<dl>
-		<dt>Assignment id (part or URL)</dt>
-		<dd><?php
-	if ($aid === null) {
-		echo "<input type=\"text\" name=\"aid\" />\n";
-	} else {
-		echo "<b>" . h($aid) . "</b> (cannot be changed)";
-	}
-		?></dd>
-		
-		<dt>Name</dt>
-		<dd>
-			<input type="text" name="name" value="<?php echo h($name); ?>" />
-		</dd>
-		
-		<dt>Description</dt>
-		<dd>
-			<textarea name="description"><?php echo h($description); ?></textarea>
-		
 <?php
 $files_count = count($assignment_files);
 for ($file_index = 0; $file_index < $files_count; $file_index++) {

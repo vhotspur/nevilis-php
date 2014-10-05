@@ -1,6 +1,25 @@
 
 VIEWS = \
 	layout/default \
+	admin/assign_edit \
+	admin/assign_main \
+	admin/assignment_edit \
+	admin/assignment_list \
+	admin/course_edit \
+	admin/course_list \
+	admin/download_main \
+	admin/download_whole_course \
+	admin/enroll_edit \
+	admin/enroll_main \
+	admin/grade_main \
+	admin/grade_whole_course \
+	admin/grade_whole_course_print \
+	admin/main \
+	admin/user_edit \
+	admin/user_list \
+	admin/user_reset_password \
+	assignment/index \
+	course/index \
 	login \
 	main \
 	password
