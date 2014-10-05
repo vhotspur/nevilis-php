@@ -27,7 +27,7 @@ function before($route) {
 	
 	$ok = auth_check_user_and_continue_session();
 	if (!$ok) {
-		flash('error', 'Please, log in again.');
+		flash('error', _('Please, log in again.'));
 		redirect('/');
 	}
 	

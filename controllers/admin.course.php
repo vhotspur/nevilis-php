@@ -1,13 +1,13 @@
 <?php
 
 function page_admin_course_list() {
-	set('title', 'Course administration');
+	set('title', _('Course administration'));
 	set('courses', data_get_course_list());
 	return html('admin/course_list.html.php');
 }
 
 function page_admin_course_add() {
-	set('title', 'Add course');
+	set('title', _('Add course'));
 	set('cid', null);
 	set('name', '');
 	
@@ -15,12 +15,12 @@ function page_admin_course_add() {
 }
 
 function page_admin_course_edit() {
-	set('title', 'Edit existing course');
+	set('title', _('Edit existing course'));
 	
 	$cid = params('cid');
 	$info = data_get_course_details($cid);
 	if ($info == null) {
-		flash('error', 'Course not found');
+		flash('error', _('Course not found'));
 		redirect_to('admin', 'courses');
 	}
 	
@@ -37,12 +37,12 @@ function page_admin_course_create() {
 	$okay = ($cid != "") && ($name != "");
 	
 	if (!$okay) {
-		flash('error', 'You need to fill-in all the values.');
+		flash('error', _('You need to fill-in all the values.'));
 		redirect_to('admin', 'courses');
 	}
 	
 	data_create_course($cid, $name);
-	flash('info', 'Course succesfully created.');
+	flash('info', _('Course succesfully created.'));
 	redirect_to('admin', 'courses');
 }
 
@@ -53,11 +53,11 @@ function page_admin_course_update() {
 	$okay = ($cid != "") && ($name != "");
 	
 	if (!$okay) {
-		flash('error', 'You need to fill-in all the values.');
+		flash('error', _('You need to fill-in all the values.'));
 		redirect_to('admin', 'courses');
 	}
 	
 	data_update_course($cid, $name);
-	flash('info', 'Course succesfully updated.');
+	flash('info', _('Course succesfully updated.'));
 	redirect_to('admin', 'courses');
 }

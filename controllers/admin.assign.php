@@ -1,7 +1,7 @@
 <?php
 
 function page_admin_assign_main() {
-	set('title', 'Course assignments administration');
+	set('title', _('Course assignments administration'));
 	set('courses', data_get_course_list());
 	return html('admin/assign_main.html.php');
 }
@@ -10,7 +10,7 @@ function page_admin_assign_edit() {
 	$cid = params('cid');
 	$info = data_get_course_details($cid);
 	if ($info == null) {
-		flash('error', 'Course not found');
+		flash('error', _('Course not found'));
 		redirect_to('admin', 'assign');
 	}
 	
@@ -29,7 +29,7 @@ function page_admin_assign_edit() {
 		$a->deadline_noupload = $a->active ? $course_assignments_map[$a->aid]->deadline_noupload : NULL;
 	}
 	
-	set('title', 'Set assignments for ' . $info->name);
+	set('title', sprintf(_('Set assignments for %s'), $info->name));
 	set('cid', $cid);
 	set('assignments', $all_assignments);
 
@@ -40,7 +40,7 @@ function page_admin_assign_to_course() {
 	$cid = params('cid');
 	$info = data_get_course_details($cid);
 	if ($info == null) {
-		flash('error', 'Course not found');
+		flash('error', _('Course not found'));
 		redirect_to('admin', 'assign');
 	}
 	
@@ -62,6 +62,6 @@ function page_admin_assign_to_course() {
 	
 	data_assign_to_course($cid, $active_assignments);
 	
-	flash('info', 'Assignments succesfully assigned.');
+	flash('info', _('Assignments succesfully assigned.'));
 	redirect_to('admin', 'assign');
 }

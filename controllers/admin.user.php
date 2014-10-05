@@ -1,13 +1,13 @@
 <?php
 
 function page_admin_user_list() {
-	set('title', 'User administration');
+	set('title', _('User administration'));
 	set('users', data_get_user_list());
 	return html('admin/user_list.html.php');
 }
 
 function page_admin_user_add() {
-	set('title', 'Add user');
+	set('title', _('Add user'));
 	set('uid', null);
 	set('name', '');
 	
@@ -15,12 +15,12 @@ function page_admin_user_add() {
 }
 
 function page_admin_user_edit() {
-	set('title', 'Edit existing user');
+	set('title', _('Edit existing user'));
 	
 	$uid = params('uid');
 	$info = data_get_user_details($uid);
 	if ($info == null) {
-		flash('error', 'User not found');
+		flash('error', _('User not found'));
 		redirect('/admin/users');
 	}
 	
@@ -37,12 +37,12 @@ function page_admin_user_create() {
 	$okay = ($uid != "") && ($name != "");
 	
 	if (!$okay) {
-		flash('error', 'You need to fill-in all the values.');
+		flash('error', _('You need to fill-in all the values.'));
 		redirect('/admin/users/add');
 	}
 	
 	data_create_user($uid, $name);
-	flash('info', 'User succesfully created.');
+	flash('info', _('User succesfully created.'));
 	redirect('/admin/users');
 }
 
@@ -53,19 +53,19 @@ function page_admin_user_update() {
 	$okay = ($uid != "") && ($name != "");
 	
 	if (!$okay) {
-		flash('error', 'You need to fill-in all the values.');
+		flash('error', _('You need to fill-in all the values.'));
 		redirect('/admin/users/add');
 	}
 	
 	data_update_user($uid, $name);
-	flash('info', 'User succesfully updated.');
+	flash('info', _('User succesfully updated.'));
 	redirect('/admin/users');
 }
 
 function page_admin_user_reset_password_select() {
 	$all_users = data_get_user_list();
 	
-	set('title', 'Password reset');
+	set('title', _('Password reset'));
 	set('users', $all_users);
 
 	return html('admin/user_reset_password.html.php');
@@ -89,7 +89,7 @@ function page_admin_user_reset_password() {
 	
 	if (count($reset_password_for) > 0) {
 		flash('reset_passwords', $reset_password_for);
-		flash('info', 'Passwords were reset.');
+		flash('info', _('Passwords were reset.'));
 	}
 	redirect_to('admin', 'users');
 }

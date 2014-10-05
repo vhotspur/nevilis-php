@@ -2,13 +2,13 @@
 
 $GLOBALS['FILE_VALIDATORS'] = array(
 	"jpeg" => array(
-		"name" => "JPEG image",
-		"error" => "not a JPEG image",
+		"name" => _('JPEG image'),
+		"error" => _('not a JPEG image'),
 		"validator" => "file_validate_jpeg"
 	),
 	"png" => array(
-		"name" => "PNG image",
-		"error" => "not a PNG image",
+		"name" => _('PNG image'),
+		"error" => _('not a PNG image'),
 		"validator" => "file_validate_png"
 	),
 );
@@ -26,7 +26,7 @@ function file_validate($filename, $validators) {
 	
 	foreach ($validators as $validator) {
 		if (!isset($FILE_VALIDATORS[$validator])) {
-			$errors[] = sprintf("unknown file validator %s", $validator);
+			$errors[] = sprintf(_('unknown file validator %s'), $validator);
 			continue;
 		}
 		

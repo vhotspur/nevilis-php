@@ -21,7 +21,7 @@ function page_assignment_main() {
 	
 	$course_name = data_get_course_name_by_id($course_id);
 	if ($course_name == null) {
-		flash('error', 'Uknown course selected.');
+		flash('error', _('Uknown course selected.'));
 		redirect('/');
 	}
 	
@@ -29,7 +29,7 @@ function page_assignment_main() {
 	
 	$info = data_get_assignment_details_for_user_in_course($assignment_id, $course_id, auth_get_current_user());
 	if ($info == null) {
-		flash('error', 'Uknown assignment selected.');
+		flash('error', _('Uknown assignment selected.'));
 		redirect('/', $course_id);
 	}
 	
@@ -60,13 +60,13 @@ function page_assignment_do_upload() {
 	}
 	
 	if (!can_upload($info->locked, $info->deadline_noupload)) {
-		flash('error', 'File uploading is prohibited at the moment.');
+		flash('error', _('File uploading is prohibited at the moment.'));
 		redirect_to($course_id, $assignment_id);
 	}
 	
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) &&
 			empty($_FILES) && $_SERVER['CONTENT_LENGTH'] > 0 ) {
-		flash('error', 'The files you are uploading are way too big.');
+		flash('error', _('The files you are uploading are way too big.'));
 		redirect_to($course_id, $assignment_id);
 	}
 	
@@ -74,7 +74,7 @@ function page_assignment_do_upload() {
 	$target_directory = sprintf("%s/%s/%s", option('file_dir'), auth_get_current_user(), $assignment_id);
 	$ok = @mkdir($target_directory, 0777, true);
 	if (!$ok && !is_dir($target_directory)) {
-		flash('error', 'Failed to prepare directory structure. Contact administrator.');
+		flash('error', _('Failed to prepare directory structure. Contact administrator.'));
 		redirect_to($course_id, $assignment_id);
 	}
 	
@@ -108,7 +108,7 @@ function page_assignment_do_upload() {
 			data_update_solution_file_timestamp($f->afid, auth_get_current_user());
 			$okay_files[] = $f->name;
 		} else {
-			$failed_files[] = array($f->name, "failed to move to permanent storage");
+			$failed_files[] = array($f->name, _('failed to move to permanent storage'));
 		}
 	}
 	
@@ -117,7 +117,7 @@ function page_assignment_do_upload() {
 	}
 	
 	if (count($okay_files) > 0) {
-		$message = "Following files were uploaded (to verify they are not damaged, try to download them):";
+		$message = _('Following files were uploaded (to verify they are not damaged, try to download them):');
 		$message .= "<ul>";
 		foreach ($okay_files as $f) {
 			$message .= sprintf("<li>%s</li>\n", h($f));
@@ -127,7 +127,7 @@ function page_assignment_do_upload() {
 	}
 	
 	if (count($failed_files) > 0) {
-		$message = "Upload of following files failed";
+		$message = _('Upload of following files failed:');
 		$message .= "<ul>";
 		foreach ($failed_files as $f) {
 			$message .= sprintf("<li>%s (%s)</li>\n", h($f[0]), h($f[1]));

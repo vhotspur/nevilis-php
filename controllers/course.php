@@ -7,7 +7,7 @@ function page_course_main() {
 	
 	$course_name = data_get_course_name_by_id($course_id);
 	if ($course_name == null) {
-		flash('error', 'Uknown course selected.');
+		flash('error', _('Uknown course selected.'));
 		redirect('/');
 	}
 	

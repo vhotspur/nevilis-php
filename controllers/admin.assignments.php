@@ -1,13 +1,13 @@
 <?php
 
 function page_admin_assignement_list() {
-	set('title', 'Assignment administration');
+	set('title', _('Assignment administration'));
 	set('assignments', data_get_assignment_list());
 	return html('admin/assignment_list.html.php');
 }
 
 function page_admin_assignement_add() {
-	set('title', 'Add assignment');
+	set('title', _('Add assignment'));
 	set('aid', null);
 	set('name', '');
 	set('description', '');
@@ -23,7 +23,7 @@ function page_admin_assignment_create() {
 	$okay = ($aid != "") && ($name != "");
 	
 	if (!$okay) {
-		flash('error', 'You need to fill-in all the values.');
+		flash('error', _('You need to fill-in all the values.'));
 		redirect_to('admin', 'assignments', 'add');
 	}
 	
@@ -58,7 +58,7 @@ function page_admin_assignment_create() {
 	
 	data_create_assignment($aid, $name, $files, $description);
 	
-	flash('info', 'Assignment succesfully created.');
+	flash('info', _('Assignment succesfully created.'));
 	redirect('/admin/assignments');
 }
 
@@ -67,11 +67,11 @@ function page_admin_assignment_edit() {
 	
 	$info = data_get_assignment_details($aid);
 	if ($info == null) {
-		flash('error', 'Assignment not found.');
+		flash('error', _('Assignment not found.'));
 		redirect('/admin/assignments');
 	}
 	
-	set('title', 'Edit assignment `' . $aid . "'");
+	set('title', sprintf(_('Edit assignment %s'), $aid));
 	set('aid', $aid);
 	set('name', $info->name);
 	set('description', $info->description);
@@ -102,7 +102,7 @@ function page_admin_assignment_update() {
 	$okay = ($aid != "") && ($name != "");
 
 	if (!$okay) {
-		flash('error', 'You need to fill-in all the values.');
+		flash('error', _('You need to fill-in all the values.'));
 		redirect_to('admin', 'assignments');
 	}
 
@@ -135,7 +135,7 @@ function page_admin_assignment_update() {
 
 	data_update_assignment($aid, $name, $files, $description);
 
-	flash('info', 'Assignment succesfully updated.');
+	flash('info', _('Assignment succesfully updated.'));
 	redirect('/admin/assignments');
 }
 

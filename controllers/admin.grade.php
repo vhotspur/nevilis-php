@@ -1,7 +1,7 @@
 <?php
 
 function page_admin_grade_main() {
-	set('title', 'Grading administration');
+	set('title', _('Grading administration'));
 	set('courses', data_get_course_list());
 	return html('admin/grade_main.html.php');
 }
@@ -10,7 +10,7 @@ function prepare_grades_for_course() {
 	$cid = params('cid');
 	$info = data_get_course_details($cid);
 	if ($info == null) {
-		flash('error', 'Course not found');
+		flash('error', _('Course not found'));
 		redirect_to('admin', 'grade');
 	}
 	
@@ -48,7 +48,7 @@ function prepare_grades_for_course() {
 	}
 	
 	set('cid', $cid);
-	set('title', 'Grades for ' . $info->name);
+	set('title', sprintf(_('Grades for %s'), $info->name));
 	set('assignments', $assignments);
 	set('users', $users);
 }
@@ -70,7 +70,7 @@ function page_admin_grade_whole_course() {
 	$cid = params('cid');
 	$info = data_get_course_details($cid);
 	if ($info == null) {
-		flash('error', 'Course not found');
+		flash('error', _('Course not found'));
 		redirect_to('admin', 'grade');
 	}
 	
@@ -97,6 +97,6 @@ function page_admin_grade_whole_course() {
 	
 	data_update_grades($data);
 	
-	flash('info', 'Grades updated.');
+	flash('info', _('Grades updated.'));
 	redirect_to('admin', 'grade');
 }

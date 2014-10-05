@@ -5,7 +5,7 @@
 
 
 function page_admin_download_main() {
-	set('title', 'Download solutions');
+	set('title', _('Download solutions'));
 	set('courses', data_get_course_list());
 	return html('admin/download_main.html.php');
 }
@@ -14,7 +14,7 @@ function page_admin_download_from_course() {
 	$cid = params('cid');
 	$info = data_get_course_details($cid);
 	if ($info == null) {
-		flash('error', 'Course not found');
+		flash('error', _('Course not found'));
 		redirect_to('admin', 'download');
 	}
 	
@@ -35,7 +35,7 @@ function page_admin_download_from_course() {
 	}
 	
 	set('cid', $cid);
-	set('title', 'Download solutions for ' . $info->name);
+	set('title', sprintf(_('Download solutions for %s'), $info->name));
 	set('assignments', $assignments);
 	set('users', $users);
 	
@@ -68,7 +68,7 @@ function page_admin_download_single_solution() {
 	$uid = params('uid');
 	$info = data_get_course_details($cid);
 	if ($info == null) {
-		flash('error', 'Course not found');
+		flash('error', _('Course not found'));
 		redirect_to('admin', 'download');
 	}
 	
@@ -92,7 +92,7 @@ function page_admin_download_all_user_solutions() {
 	$uid = params('uid');
 	$info = data_get_course_details($cid);
 	if ($info == null) {
-		flash('error', 'Course not found');
+		flash('error', _('Course not found'));
 		redirect_to('admin', 'download');
 	}
 	
@@ -120,7 +120,7 @@ function page_admin_download_all_assignment_solutions() {
 	$aid = params('aid');
 	$info = data_get_course_details($cid);
 	if ($info == null) {
-		flash('error', 'Course not found');
+		flash('error', _('Course not found'));
 		redirect_to('admin', 'download');
 	}
 	
@@ -147,7 +147,7 @@ function page_admin_download_all_solutions() {
 	$cid = params('cid');
 	$info = data_get_course_details($cid);
 	if ($info == null) {
-		flash('error', 'Course not found');
+		flash('error', _('Course not found'));
 		redirect_to('admin', 'download');
 	}
 

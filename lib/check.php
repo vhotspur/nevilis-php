@@ -6,7 +6,7 @@ function check_user_can_view_course($course_id) {
 		return;
 	}
 	
-	flash('error', 'Unknown course or you are not member of that group.');
+	flash('error', _('Unknown course or you are not member of that group.'));
 	redirect_to('/');
 }
 

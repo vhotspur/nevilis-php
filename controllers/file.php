@@ -11,7 +11,7 @@ function page_file_download() {
 	
 	$id = data_get_file_id($filename, $user, $assignment);
 	if ($id == 0) {
-		flash('error', 'File not uploaded.');
+		flash('error', _('File not uploaded.'));
 		redirect_to($course, $assignment);
 	}
 	
@@ -28,7 +28,7 @@ function page_file_download() {
 		}
 		return file_read($path, 0);
 	} else {
-		flash('error', sprintf("File %s not found, contact administrator.", $filename));
+		flash('error', sprintf(_('File %s not found, contact administrator.'), $filename));
 		redirect_to($course, $assignment);
 	}
 }
