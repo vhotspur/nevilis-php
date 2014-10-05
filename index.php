@@ -6,6 +6,8 @@ require_once 'lib/auth.php';
 session_start();
 assert_options(ASSERT_ACTIVE, 1);
 
+
+
 function before_exit($exiting) {
 	if (! $exiting) {
 		// Probably redirecting
@@ -35,6 +37,15 @@ function configure() {
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	option('db_conn', $db);
 	option('file_dir', 'dev_files/');
+	// TODO: per user selection
+	option('l10n', 'cs_CZ.utf8');
+	
+	$lang = option('l10n');
+	putenv("LC_ALL=$lang");
+	setlocale(LC_ALL, $lang);
+	bindtextdomain('nevilis', './locale/');
+	bind_textdomain_codeset('nevilis', 'UTF-8');
+	textdomain('nevilis');
 }
 
 function not_found($errno, $errstr, $errfile = null, $errline = null) {
