@@ -3,25 +3,40 @@
 	<head>
 		<title>{$title/h}</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="css/main.css" rel="stylesheet" type="text/css" media="screen,projection,handheld">
 		</head>
 <body>
+<div id="container">
 <h1>{$title/h}</h1>
-<?php echo flash_format_all(); ?>
+
 %if auth_is_user_logged_in()%
-<p>
-	%_Currently logged in user_%:  <?php echo auth_get_current_user(); ?>
-	(<a href="%url('logout')%">%_log out_%</a>).
-	<a href="%url('/')%">%_Go to list of courses._%</a>
+<div id="nav">
+<h2>%_Menu_%</h2>
+<ul>
+	<li><a href="%url('/')%">%_Home_%</a>
+	%foreach $glob_user_courses $c%
+	<li><a href="%url($c->cid)%">{$c->name}</a></li>
+	%endforeach%
 	%if auth_is_user_admin()%
-		<a href="%url('admin')%">%_Go to administration_%</a>
+	<li><a href="%url('admin')%">%_Administration_%</a><ul>
+		<li><a href="%url('admin', 'users')%">%_Users_%</a></li>
+		<li><a href="%url('admin', 'courses')%">%_Courses_%</a></li>
+		<li><a href="%url('admin', 'enroll')%">%_Enroll_%</a></li>
+		<li><a href="%url('admin', 'assignments')%">%_Assignments_%</a></li>
+		<li><a href="%url('admin', 'assign')%">%_Assign_%</a></li>
+		<li><a href="%url('admin', 'grade')%">%_Grade_%</a></li>
+		<li><a href="%url('admin', 'download')%">%_Mass download_%</a></li>
+	</ul></li>
 	%endif%
-	<a href="%url('change-password')%">%_Change your password._%</a>
-</p>
+	<li><a href="%url('change-password')%">%_Change password_%</a>
+	<li><a href="%url('logout')%">%_Log out_%</a></li>
+</ul>
+</div>
 %endif%
 
-<div id="main">
+<div id="content">
+<?php echo flash_format_all(); ?>
 {$content}
-</div>
     
 <?php
 	function print_queries($title, $queries) {
@@ -43,5 +58,7 @@
 		echo "</div>";
 	}
 ?>
+</div>
+</div>
 </body>
 </html>

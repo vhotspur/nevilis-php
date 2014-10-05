@@ -30,6 +30,8 @@ function before($route) {
 		flash('error', 'Please, log in again.');
 		redirect('/');
 	}
+	
+	set('glob_user_courses', data_get_course_list_for_user(auth_get_current_user()));
 }
 
 function configure() {
