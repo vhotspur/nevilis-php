@@ -103,8 +103,8 @@ if (auth_is_user_logged_in()) {
 	dispatch('/:course/:assignment/:filename', 'page_file_download');	
 } else {
 	dispatch_post('/login', 'page_auth_do_login');
-	dispatch_post('/*', 'page_auth_login');
-	dispatch('/*', 'page_auth_login');
+	dispatch_post('/**', 'page_auth_login');
+	dispatch('/**', 'page_auth_login');
 }
 
 run();
