@@ -1,37 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title><?php echo $title; ?></title>
+		<title>{$title/h}</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		</head>
 <body>
-	<h1><?php echo $title; ?></h1>
-	
-	<?php
-		echo flash_format_all();
-		
-		if (auth_is_user_logged_in ()) {
-			printf("<p>%s: %s (<a href=\"%s\">%s</a>). <a href=\"%s\">%s</a>.",
-				"Currently logged in user",
-				auth_get_current_user(),
-				url_for('/logout'), "log out",
-				url_for('/'), "Go to list of courses");
-			if (auth_is_user_admin()) {
-				printf(" <a href=\"%s\">%s</a>\n",
-					url_for('admin'), "Go to administration");
-			}
-			printf(" <a href=\"%s\">%s</a>", url_for('/change-password'),
-				"Change your password.");
-			printf("</p>\n");
-		}
-				
-	?>
+<h1>{$title/h}</h1>
+<?php echo flash_format_all(); ?>
+%if auth_is_user_logged_in()%
+<p>
+	%_Currently logged in user_%:  <?php echo auth_get_current_user(); ?>
+	(<a href="%url('logout')%">%_log out_%</a>).
+	<a href="%url('/')%">%_Go to list of courses._%</a>
+	%if auth_is_user_admin()%
+		<a href="%url('admin')%">%_Go to administration_%</a>
+	%endif%
+	<a href="%url('change-password')%">%_Change your password._%</a>
+</p>
+%endif%
 
-    <div id="main">
-    	<?php
-    		echo $content;
-    	?>
-    </div>
+<div id="main">
+{$content}
+</div>
     
 <?php
 	function print_queries($title, $queries) {
@@ -53,5 +43,5 @@
 		echo "</div>";
 	}
 ?>
-  </body>
+</body>
 </html>
