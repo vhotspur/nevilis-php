@@ -1,7 +1,7 @@
 <?php
 
 function page_auth_login() {
-	set('title', 'Log in');
+	set('title', _('Log in'));
 	return html('login.html.php');
 }
 
@@ -12,10 +12,10 @@ function page_auth_do_login() {
 	$ok = auth_check_user_and_start_session($user, $password);
 	
 	if ($ok) {
-		flash('info', 'You have been logged in.');
+		flash('info', _('You have been logged in.'));
 		redirect('/');
 	} else {
-		flash('error', 'Invalid username/password.');
+		flash('error', _('Invalid username/password.'));
 		redirect('/login');
 	}
 }
@@ -23,13 +23,13 @@ function page_auth_do_login() {
 function page_auth_logout() {
 	auth_close_session();
 	
-	flash('info', 'You have been logged out.');
+	flash('info', _('You have been logged out.'));
 	
 	redirect('/');
 }
 
 function page_auth_change_password() {
-	set('title', 'Password change');
+	set('title', _('Password change'));
 	return html('password.html.php');
 }
 
@@ -40,20 +40,20 @@ function page_auth_do_change_password() {
 	
 	$error = "";
 	if (strlen($new1) < 3) {
-		flash('error', 'Password too short.');
+		flash('error', _('Password too short.'));
 		redirect('/change-password');
 	}
 	if ($new1 != $new2) {
-		flash('error', 'Passwords do not match.');
+		flash('error', _('Passwords do not match.'));
 		redirect('/change-password');
 	}
 	
 	$ok = auth_change_user_password(auth_get_current_user(), $old, $new1);
 	if ($ok) {
-		flash('info', 'Password updated.');
+		flash('info', _('Password updated.'));
 		redirect('/');
 	} else {
-		flash('error', 'Passwords do not match.');
+		flash('error', _('Passwords do not match.'));
 		redirect('/change-password');
 	}
 }
