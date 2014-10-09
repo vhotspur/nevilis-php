@@ -35,7 +35,7 @@
 %endif%
 
 <div id="content">
-%if $glob_flash != ""%
+%if @$glob_flash != ""%
 <div id="flashes">
 {$glob_flash}
 </div>
