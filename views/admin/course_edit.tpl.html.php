@@ -9,6 +9,8 @@
 	%endif%
 <dt>%_Course name_%</dt>
 	<dd><input type="text" name="name" value="{$name/h}" /></dd>
+<dt>%_Course name displayed to the administrator_%</dt>
+	<dd><input type="text" name="adminname" value="{$adminname/h}" /></dd>
 <dt><input type="submit" value="%_Update_%" /></dt>
 </dl>
 </form>

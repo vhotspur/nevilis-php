@@ -48,7 +48,7 @@ function prepare_grades_for_course() {
 	}
 	
 	set('cid', $cid);
-	set('title', sprintf(_('Grades for %s'), $info->name));
+	set('title', sprintf(_('Grades for %s (%s)'), $info->name, $info->adminname));
 	set('assignments', $assignments);
 	set('users', $users);
 }

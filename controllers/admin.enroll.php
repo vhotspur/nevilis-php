@@ -25,7 +25,7 @@ function page_admin_enroll_edit() {
 		$u->enrolled = array_search($u->uid, $enrolled_users) !== FALSE;
 	}
 
-	set('title', sprintf(_('Enroll users for %s'), $info->name));
+	set('title', sprintf(_('Enroll users for %s (%s)'), $info->name, $info->adminname));
 	set('cid', $cid);
 	set('users', $all_users);
 

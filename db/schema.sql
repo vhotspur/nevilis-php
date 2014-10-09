@@ -5,6 +5,7 @@ CREATE TABLE `courseusers` (
 CREATE TABLE "course" (
 	`cid`	TEXT NOT NULL,
 	`name`	TEXT NOT NULL,
+	`adminname` TEXT,
 	PRIMARY KEY(cid)
 );
 CREATE TABLE `assignment` (

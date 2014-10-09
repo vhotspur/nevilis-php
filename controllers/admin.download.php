@@ -35,7 +35,7 @@ function page_admin_download_from_course() {
 	}
 	
 	set('cid', $cid);
-	set('title', sprintf(_('Download solutions for %s'), $info->name));
+	set('title', sprintf(_('Download solutions for %s (%s)'), $info->name, $info->adminname));
 	set('assignments', $assignments);
 	set('users', $users);
 	

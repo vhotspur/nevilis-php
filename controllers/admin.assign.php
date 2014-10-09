@@ -29,7 +29,7 @@ function page_admin_assign_edit() {
 		$a->deadline_noupload = $a->active ? $course_assignments_map[$a->aid]->deadline_noupload : NULL;
 	}
 	
-	set('title', sprintf(_('Set assignments for %s'), $info->name));
+	set('title', sprintf(_('Set assignments for %s (%s)'), $info->name, $info->adminname));
 	set('cid', $cid);
 	set('assignments', $all_assignments);
 

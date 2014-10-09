@@ -4,7 +4,8 @@ function data_get_course_list() {
 	return db_find_objects("all existing courses",
 		"SELECT
     			cid,
-    			name
+    			name,
+			adminname
     		FROM
     			course");
 }
@@ -13,7 +14,8 @@ function data_get_course_list_for_user($user) {
     return db_find_objects("courses user is enrolled to",
     	"SELECT
     		cid,
-    		name
+    		name,
+    		adminname
     	FROM
     		course
     		JOIN courseusers on course.cid=courseusers.course
@@ -35,7 +37,8 @@ function data_get_course_details($id) {
 	return db_find_object("get course name by its id",
 		"SELECT
 			cid,
-			name
+			name,
+			adminname
 		FROM
 			course
 		WHERE
@@ -106,20 +109,14 @@ function data_assign_to_course($course, $assignments) {
 	}
 }
 
-function data_create_course($cid, $name) {
-	$course = array(
-			"cid" => $cid,
-			"name" => $name
-	);
+function data_create_course($cid, $details) {
+	$details["cid"] = $cid;
 
-	db_create_object_from_array("create new course", $course, "course");
+	db_create_object_from_array("create new course", $details, "course");
 }
 
-function data_update_course($cid, $name) {
-	$course = array(
-			"cid" => $cid,
-			"name" => $name
-	);
+function data_update_course($cid, $details) {
+	$details["cid"] = $cid;
 
-	db_update_object_from_array("update existing course", $course, "course", 'cid');
+	db_update_object_from_array("update existing course", $details, "course", 'cid');
 }
