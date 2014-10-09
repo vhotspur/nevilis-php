@@ -11,6 +11,30 @@ function data_get_assignment_list() {
 		");
 }
 
+function data_get_active_assignments_for_user($user) {
+	return db_find_objects("list of active assignments",
+		"SELECT
+			aid,
+			assignment.name AS assignmentname,
+			cid,
+			course.name AS coursename,
+			assignment.description AS description,
+			courseassignment.deadline AS deadline,
+			(strftime('%s', deadline) - strftime('%s', 'now')) / 3600 AS remaininghours
+		FROM
+			assignment
+			JOIN courseassignment ON aid=courseassignment.assignment
+			JOIN course ON cid=courseassignment.course
+			JOIN courseusers ON cid=courseusers.course
+		WHERE
+			datetime(deadline) > datetime('now')
+			AND courseusers.user = :user
+		ORDER BY
+			deadline ASC,
+			assignment.name ASC
+		", array("user" => $user));
+}
+
 function data_get_assignments_for_course($course) {
 	return db_find_objects("active assignments in a course",
 		"SELECT

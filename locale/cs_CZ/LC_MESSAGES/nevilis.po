@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nevilis PHP\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-09 13:52+0200\n"
-"PO-Revision-Date: 2014-10-09 13:55+0100\n"
+"POT-Creation-Date: 2014-10-09 14:26+0200\n"
+"PO-Revision-Date: 2014-10-09 14:27+0100\n"
 "Last-Translator: Vojtech Horky <vhotspur@github.com>\n"
 "Language-Team: cs_CZ\n"
 "Language: cs_CZ\n"
@@ -17,9 +17,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.9\n"
 
-#: views/main.html.php:8
-msgid "No courses assigned yet."
-msgstr "Nejste zapsáni v žádném kurzu."
+#: views/main.html.php:4
+msgid "Course"
+msgstr "Kurzy"
+
+#: views/main.html.php:5
+msgid "Assignment"
+msgstr "Úloha"
+
+#: views/main.html.php:6 views/course/index.html.php:6
+#: views/admin/assign_edit.html.php:6
+msgid "Deadline"
+msgstr "Termín odevzdání"
+
+#: views/main.html.php:7
+msgid "Remaining time"
+msgstr "Zbývající čas"
+
+#: views/main.html.php:17
+#, php-format
+msgid "%d days"
+msgstr "%d dní"
+
+#: views/main.html.php:19
+#, php-format
+msgid "%d hours"
+msgstr "%d hodin"
+
+#: views/main.html.php:21
+#, php-format
+msgid "%d minutes"
+msgstr "%d minut"
+
+#: views/main.html.php:27
+msgid "No active assignments."
+msgstr "Žádné běžící úlohy."
 
 #: views/password.html.php:3
 msgid "Current password"
@@ -44,10 +76,6 @@ msgstr "Název úlohy"
 #: views/course/index.html.php:5 views/layout/default.html.php:27
 msgid "Grade"
 msgstr "Známky"
-
-#: views/course/index.html.php:6 views/admin/assign_edit.html.php:6
-msgid "Deadline"
-msgstr "Termín odevzdání"
 
 #: views/course/index.html.php:7
 msgid "Comment"
@@ -472,6 +500,9 @@ msgstr "Úlohy byly zadány."
 #: index.php:30
 msgid "Please, log in again."
 msgstr "Přihlašte se, prosím, znovu."
+
+#~ msgid "No courses assigned yet."
+#~ msgstr "Nejste zapsáni v žádném kurzu."
 
 #~ msgid "Currently logged in user"
 #~ msgstr "Právě přihlášený uživatel"
