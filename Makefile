@@ -38,7 +38,7 @@ all: $(VIEWS_OUT_FILES) $(MO_FILES)
 %.html.php: %.tpl.html.php
 	$(PHP_CLI) ./tools/make_views.php <$< >$@
 
-nevilis.po: | $(VIEWS_OUT_FILES)
+nevilis.pot: | $(VIEWS_OUT_FILES)
 	find -name '*.php' -and -not -name '*.tpl.*' \
 		| xargs xgettext \
 			-dnevilis \
@@ -53,10 +53,13 @@ update-po-files: $(PO_FILES)
 %.mo: %.po
 	msgfmt $< -o $@
 
-locale/%/LC_MESSAGES/nevilis.po: nevilis.po
-	mv $@ $*.old.po
-	msgmerge $*.old.po nevilis.po --output-file=$@
-	rm $*.old.po
+locale/%/LC_MESSAGES/nevilis.po: nevilis.pot
+	msgmerge $@ nevilis.pot --output-file=$*.new.po
+	if [ -z "`diff -ud $@ $*.new.po | tail -n +3 | grep '^[-+]' | grep -v 'POT-Creation-Date'`" ]; then \
+		rm $*.new.po; \
+	else \
+		mv $*.new.po $@; \
+	fi
 
 clean:
-	rm -f $(VIEWS_OUT_FILES) $(MO_FILES) nevilis.po
+	rm -f $(VIEWS_OUT_FILES) $(MO_FILES) nevilis.pot
