@@ -7,6 +7,7 @@
 		<th class="comment">%_Comment_%</th>
 	</tr>
 </thead>
+<tbody>
 %foreach $assignments $a%
 <tr>
 	<td class="name"><a href="%url($course_id, $a->aid)%">{$a->name/h}</a></td>
@@ -14,9 +15,10 @@
 	<td class="deadline">{$a->deadline|&mdash;}</td>
 	<td class="comment">{$a->comment/h|}</td>
 </tr>
-%before%
-<tbody>
-%after%
-</tbody>
+%else%
+<tr>
+	<td colspan="4">%_No assignments yet._%</td>
+</tr>
 %endforeach%
+</tbody>
 </table>
