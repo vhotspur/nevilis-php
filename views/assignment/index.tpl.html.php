@@ -1,8 +1,6 @@
-%if $grade != null%
 <h2>%_Your grade_%: {$grade->grade|--}</h2>
-	%if $grade->comment != ""%
-		<p>{$grade->comment/h}</p>
-	%endif%
+%if @$grade->comment != ""%
+	<p>{$grade->comment/h}</p>
 %endif%
 
 <h2>%_Description_%</h2>
