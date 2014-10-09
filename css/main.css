@@ -82,3 +82,25 @@ A:hover {
 	color: black;
 	background: #CDFFCD;
 }
+
+TABLE.assignments, TABLE.assignments TH, TABLE.assignments TD {
+	border-collapse: collapse;
+	padding: 4px;
+}
+TABLE.assignments {
+	margin: 1ex auto;
+	border: 2px solid black;
+	border-width: 2px 0;
+}
+TABLE.assignments TH {
+	border-bottom: 1px solid black;
+	padding: 0.5ex 1em;
+	text-align: center;
+}
+TABLE.assignments TD {
+	text-align: center;
+}
+TABLE.assignments TD.name, TABLE.assignments TD.comment {
+	text-align: left;
+}
+
