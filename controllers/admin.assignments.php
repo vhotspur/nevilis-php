@@ -6,12 +6,37 @@ function page_admin_assignement_list() {
 	return html('admin/assignment_list.html.php');
 }
 
+function page_admin_assignment_edit_form($id, $info, $new_file_count) {
+	if (!isset($info->files)) {
+		$info->files = array();
+	}
+	set('aid', $id);
+	set('name', $info->name);
+	set('description', $info->description);
+	
+	$new_file = array(
+		"afid" => 0,
+		"name" => "",
+		"filename" => "",
+		"validation" => array(),
+		"maxsize" => "",
+		"description" => ""
+	);
+	for ($i = 0; $i < $new_file_count; $i++) {
+		$info->files[] = make_object($new_file);
+	}
+	
+	set('assignment_files', $info->files);
+}
+
 function page_admin_assignement_add() {
 	set('title', _('Add assignment'));
-	set('aid', null);
-	set('name', '');
-	set('description', '');
-
+	
+	page_admin_assignment_edit_form(null, make_object(array(
+		'name' => '',
+		'description' => ''
+	)), 3);
+	
 	return html('admin/assignment_edit.html.php');
 }
 
@@ -72,24 +97,7 @@ function page_admin_assignment_edit() {
 	}
 	
 	set('title', sprintf(_('Edit assignment %s'), $aid));
-	set('aid', $aid);
-	set('name', $info->name);
-	set('description', $info->description);
-	
-	/* Prepare space for new files (if needed). */
-	$new_file = array(
-		"afid" => 0,
-		"name" => "",
-		"filename" => "",
-		"validation" => array(),
-		"maxsize" => "",
-		"description" => ""
-	);
-	for ($i = 0; $i < 2; $i++) {	
-		$info->files[] = make_object($new_file);
-	}
-	
-	set('assignment_files', $info->files);
+	page_admin_assignment_edit_form($aid, $info, 2);
 	
 	return html('admin/assignment_edit.html.php');
 }
