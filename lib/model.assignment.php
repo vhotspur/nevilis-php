@@ -36,17 +36,12 @@ function data_get_assigments_and_grades_for_course($user, $course) {
 			aid,
 			assignment.name AS name,
 			assignment.description AS description,
-			courseassignment.deadline AS deadline,
-			COUNT(afid) AS filecount
+			courseassignment.deadline AS deadline
 		FROM
 			assignment
-			JOIN courseassignment ON aid=courseassignment.assignment,
-			assignmentfile
+			JOIN courseassignment ON aid=courseassignment.assignment
 		WHERE
 			course=:course
-			AND assignmentfile.assignment=aid
-		GROUP BY
-			aid
 		", array("course" => $course));
 
 	if ($assignments == null) {
