@@ -9,17 +9,15 @@ function v_post($name, $default = null) {
 }
 
 function flash_format_all() {
-	$settings = array(
-		array("error", "#800"),
-		array("info", "#080")
-	);
+	$names = array("error", "info");
 	
 	$result = "";
 	
-	foreach ($settings as $s) {
-		if (flash_now($s[0]) != null) {
-			$result .= sprintf("<div style=\"color: %s\">%s</div>\n",
-				$s[1], flash_now($s[0]));
+	foreach ($names as $a) {
+		$fl = flash_now($a);
+		if ($fl != null) {
+			$result .= sprintf("<p class=\"%s\">%s</p>\n",
+				$a, $fl);
 		}
 	}
 	

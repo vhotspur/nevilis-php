@@ -32,6 +32,7 @@ function before($route) {
 	}
 	
 	set('glob_user_courses', data_get_course_list_for_user(auth_get_current_user()));
+	set('glob_flash', flash_format_all());
 }
 
 function configure() {

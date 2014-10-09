@@ -83,6 +83,26 @@ A:hover {
 	background: #CDFFCD;
 }
 
+#flashes {
+	padding: 0 4em;
+}
+#flashes P {
+	border: 2px solid black;
+	border-radius: 8px;
+	margin: 1em auto;
+	padding: 1ex 2ex;
+}
+#flashes P.error {
+	color: #900;
+	border-color: #900;
+	background-color: #FEE;
+}
+#flashes P.info {
+	color: #00C;
+	border-color: #00C;
+	background-color: #EEF;
+}
+
 TABLE.assignments, TABLE.assignments TH, TABLE.assignments TD {
 	border-collapse: collapse;
 	padding: 4px;

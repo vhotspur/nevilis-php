@@ -35,7 +35,12 @@
 %endif%
 
 <div id="content">
-<?php echo flash_format_all(); ?>
+%if $glob_flash != ""%
+<div id="flashes">
+{$glob_flash}
+</div>
+%endif%
+
 {$content}
     
 <?php
