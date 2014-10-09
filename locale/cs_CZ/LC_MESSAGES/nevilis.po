@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nevilis PHP\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-09 13:05+0200\n"
-"PO-Revision-Date: 2014-10-09 13:05+0100\n"
+"POT-Creation-Date: 2014-10-09 13:52+0200\n"
+"PO-Revision-Date: 2014-10-09 13:55+0100\n"
 "Last-Translator: Vojtech Horky <vhotspur@github.com>\n"
 "Language-Team: cs_CZ\n"
 "Language: cs_CZ\n"
@@ -52,6 +52,10 @@ msgstr "Termín odevzdání"
 #: views/course/index.html.php:7
 msgid "Comment"
 msgstr "Komentář"
+
+#: views/course/index.html.php:20
+msgid "No assignments yet."
+msgstr "Zatím nebyly zadány žádné úlohy."
 
 #: views/login.html.php:3 views/login.html.php:11 controllers/auth.php:4
 msgid "Log in"
@@ -198,27 +202,27 @@ msgstr "Název úlohy"
 msgid "Deadline (disable upload)"
 msgstr "Termín odevzdání (nejde nahrávat)"
 
-#: views/assignment/index.html.php:2
+#: views/assignment/index.html.php:1
 msgid "Your grade"
 msgstr "Vaše hodnocení"
 
-#: views/assignment/index.html.php:8
+#: views/assignment/index.html.php:6
 msgid "Description"
 msgstr "Popis"
 
-#: views/assignment/index.html.php:14
+#: views/assignment/index.html.php:12
 msgid "Files"
 msgstr "Soubory"
 
-#: views/assignment/index.html.php:23
+#: views/assignment/index.html.php:21
 msgid "Download your file"
 msgstr "Stáhnout váš soubor"
 
-#: views/assignment/index.html.php:25
+#: views/assignment/index.html.php:23
 msgid "File not yet uploaded."
 msgstr "Soubor nebyl dosud nahrán."
 
-#: views/assignment/index.html.php:37
+#: views/assignment/index.html.php:35
 msgid "Upload files..."
 msgstr "Nahrát soubory..."
 
@@ -291,7 +295,7 @@ msgid "Edit existing course"
 msgstr "Úprava existujícího kurzu"
 
 #: controllers/admin.course.php:45 controllers/admin.course.php:64
-#: controllers/admin.assignments.php:26 controllers/admin.assignments.php:105
+#: controllers/admin.assignments.php:51 controllers/admin.assignments.php:113
 #: controllers/admin.user.php:40 controllers/admin.user.php:56
 msgid "You need to fill-in all the values."
 msgstr "Musíte vyplnit všechny políčka."
@@ -308,24 +312,24 @@ msgstr "Kurz byl upraven."
 msgid "Assignment administration"
 msgstr "Správa úloh"
 
-#: controllers/admin.assignments.php:10
+#: controllers/admin.assignments.php:33
 msgid "Add assignment"
 msgstr "Přidat úlohu"
 
-#: controllers/admin.assignments.php:61
+#: controllers/admin.assignments.php:86
 msgid "Assignment succesfully created."
 msgstr "Úloha byla vytvořena."
 
-#: controllers/admin.assignments.php:70
+#: controllers/admin.assignments.php:95
 msgid "Assignment not found."
 msgstr "Úloha nebyla nalezena."
 
-#: controllers/admin.assignments.php:74
+#: controllers/admin.assignments.php:99
 #, php-format
 msgid "Edit assignment %s"
 msgstr "Úprava úlohy %s"
 
-#: controllers/admin.assignments.php:138
+#: controllers/admin.assignments.php:146
 msgid "Assignment succesfully updated."
 msgstr "Úloha byla upravena."
 
