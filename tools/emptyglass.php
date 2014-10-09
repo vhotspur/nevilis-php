@@ -100,7 +100,7 @@ class emptyglass_transformer {
 		$name = $variable["parts"][0];
 		$mods = isset($variable["parts"][2]) ? $variable["parts"][2] : "";
 		if (isset($variable["parts"][4])) {
-			$name = sprintf('(isset(%s) ? %s : "%s")', $name, $name, addslashes($variable["parts"][4]));
+			$name = sprintf('(@isset(%s) ? %s : "%s")', $name, $name, addslashes($variable["parts"][4]));
 		}
 		
 		if ($mods == "h") {
