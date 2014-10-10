@@ -25,7 +25,7 @@ BEGIN TRANSACTION;
 INSERT INTO "user" VALUES('admin','xxx','Super User','admin');
 INSERT INTO "user" VALUES('user1','xxx','User One',NULL);
 
-INSERT INTO "course" VALUES('c1','Example course');
+INSERT INTO "course" VALUES('c1','Example', 'example run');
 
 INSERT INTO "courseusers" VALUES('user1','c1');
 
