@@ -12,7 +12,14 @@
 <tr>
 	<td>{$a->coursename/h}</td>
 	<td><a href="%url($a->cid, $a->aid)%">{$a->assignmentname/h}</a></td>
-	<td>{$a->deadline|&mdash;}</td>
+	<td><?php
+	if (!@empty($a->deadline)) {
+		$unix_time = strtotime($a->deadline);
+		echo strftime('%c', $unix_time);
+	} else {
+		echo "&mdash";
+	}
+	?></td>
 	<td><?php $a->remaininghours += 0.; if ($a->remaininghours > 49) {
 		printf(_("%d days"), $a->remaininghours / 24);
 	} else if ($a->remaininghours > 1) {

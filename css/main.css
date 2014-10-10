@@ -108,7 +108,7 @@ A:hover {
 
 TABLE.assignments, TABLE.assignments TH, TABLE.assignments TD {
 	border-collapse: collapse;
-	padding: 4px;
+	padding: 4px 1ex;
 }
 TABLE.assignments {
 	margin: 1ex auto;

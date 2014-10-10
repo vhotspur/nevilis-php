@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nevilis PHP\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-10 09:04+0200\n"
+"POT-Creation-Date: 2014-10-10 10:03+0200\n"
 "PO-Revision-Date: 2014-10-09 14:27+0100\n"
 "Last-Translator: Vojtech Horky <vhotspur@github.com>\n"
 "Language-Team: cs_CZ\n"
@@ -17,17 +17,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.9\n"
 
-#: views/main.html.php:17
+#: views/main.html.php:24
 #, php-format
 msgid "%d days"
 msgstr "%d dní"
 
-#: views/main.html.php:19
+#: views/main.html.php:26
 #, php-format
 msgid "%d hours"
 msgstr "%d hodin"
 
-#: views/main.html.php:21
+#: views/main.html.php:28
 #, php-format
 msgid "%d minutes"
 msgstr "%d minut"
@@ -308,7 +308,7 @@ msgstr "Jméno"
 msgid "New password"
 msgstr "Nové heslo"
 
-#: views/main.html.php:27
+#: views/main.html.php:34
 msgid "No active assignments."
 msgstr "Žádné běžící úlohy."
 
