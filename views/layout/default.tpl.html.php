@@ -5,7 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link href="css/main.css" rel="stylesheet" type="text/css" media="screen,projection,handheld">
 		</head>
-<body>
+<body%if !@empty($glob_body_css_class)% class="{$glob_body_css_class}"%endif%>
 <div id="container">
 <h1>{$title/h}</h1>
 

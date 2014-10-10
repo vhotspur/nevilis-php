@@ -1,7 +1,7 @@
 <?php
 
 function page_auth_login() {
-	set('title', _('Log in'));
+	set('title', _('Assignment submission system'));
 	return html('login.html.php');
 }
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nevilis PHP\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-10 10:03+0200\n"
+"POT-Creation-Date: 2014-10-10 10:20+0200\n"
 "PO-Revision-Date: 2014-10-09 14:27+0100\n"
 "Last-Translator: Vojtech Horky <vhotspur@github.com>\n"
 "Language-Team: cs_CZ\n"
@@ -81,7 +81,7 @@ msgstr "Název úlohy"
 msgid "Assignment not found."
 msgstr "Úloha nebyla nalezena."
 
-#: controllers/main.php:4
+#: controllers/auth.php:4 controllers/main.php:4
 msgid "Assignment submission system"
 msgstr "Systém pro odesílání úloh"
 
@@ -284,7 +284,7 @@ msgstr "Neplatné uživatelské jméno nebo heslo."
 msgid "JPEG image"
 msgstr "JPEG obrázek"
 
-#: controllers/auth.php:4 views/login.html.php:3 views/login.html.php:11
+#: views/login.html.php:3 views/login.html.php:11
 msgid "Log in"
 msgstr "Přihlásit se"
 
@@ -312,7 +312,7 @@ msgstr "Nové heslo"
 msgid "No active assignments."
 msgstr "Žádné běžící úlohy."
 
-#: views/course/index.html.php:20
+#: views/course/index.html.php:27
 msgid "No assignments yet."
 msgstr "Zatím nebyly zadány žádné úlohy."
 
@@ -352,7 +352,7 @@ msgstr "Hesla nesouhlasí."
 msgid "Passwords were reset."
 msgstr "Hesla byla vyresetována."
 
-#: index.php:30
+#: index.php:31
 msgid "Please, log in again."
 msgstr "Přihlašte se, prosím, znovu."
 

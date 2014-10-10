@@ -15,6 +15,11 @@ BODY {
 	max-width: 100%;
 	line-height: 150%;
 }
+BODY.auth #content {
+	float: none;
+	margin: 1ex auto;
+	width: 40em;
+}
 
 H1 {
 	text-align: center;
@@ -137,4 +142,23 @@ FORM.files FIELDSET LEGEND {
 	border: 0px none;
 	margin: 0;
 	font-size: 120%;
+}
+BODY.auth FORM {
+	text-align: center;
+}
+BODY.auth FORM FIELDSET {
+	border: 0px none;
+	margin: 0 0 1em 0;
+	padding: 0;
+}
+BODY.auth FORM FIELDSET LEGEND {
+	font-size: 150%;
+	border: 0px none;
+	margin: 0 auto;
+	padding: 0;
+	width: 100%;
+	text-align: center;
+}
+BODY.auth FORM FIELDSET DD {
+	margin: 5px 0 1em 0;
 }

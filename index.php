@@ -22,6 +22,7 @@ function before($route) {
 	
 	$auth_check_skip_pages = array("page_auth_login", "page_auth_do_login", "page_auth_logout");
 	if (array_search($handler, $auth_check_skip_pages) !== false) {
+		set('glob_body_css_class', 'auth');
 		return;
 	}	
 	
