@@ -19,7 +19,10 @@ BODY {
 H1 {
 	text-align: center;
 	font-size: 200%;
-	color: #1B7F1B;
+	background-color:#1B7F1B; 
+	color: white;
+	padding: 1ex;
+	font-variant: small-caps;
 }
 H2, H3 {
 	color: black;
@@ -124,3 +127,14 @@ TABLE.assignments TD.name, TABLE.assignments TD.comment {
 	text-align: left;
 }
 
+FORM.files FIELDSET {
+	border: 0px none;
+	margin: 0 0 1em 0;
+	padding: 0;
+	border-bottom: 1px solid #ccc;
+}
+FORM.files FIELDSET LEGEND {
+	border: 0px none;
+	margin: 0;
+	font-size: 120%;
+}

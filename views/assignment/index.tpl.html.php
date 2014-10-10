@@ -11,7 +11,7 @@
 %foreach $files $f%
 %before%
 <h2>%_Files_%</h2>
-<form method="post" action="%url($course_id, $assignment_id, 'upload')%" enctype="multipart/form-data">
+<form method="post" action="%url($course_id, $assignment_id, 'upload')%" enctype="multipart/form-data" class="files">
 %after%
 	%if $can_upload%
 		<input type="submit" value="%_Upload files..._%" />
