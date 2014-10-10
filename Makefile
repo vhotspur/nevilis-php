@@ -44,6 +44,7 @@ nevilis.pot: | $(VIEWS_OUT_FILES)
 			-dnevilis \
 			--package-name="Nevilis PHP" \
 			--package-version=0.1 \
+			--sort-output \
 			-o - \
 		| sed 's@\(Content-Type:.*charset=\)CHARSET\(.*\)@\1UTF-8\2@' \
 		> $@
@@ -54,7 +55,7 @@ update-po-files: $(PO_FILES)
 	msgfmt $< -o $@
 
 locale/%/LC_MESSAGES/nevilis.po: nevilis.pot
-	msgmerge $@ nevilis.pot --output-file=$*.new.po
+	msgmerge $@ nevilis.pot --sort-output --output-file=$*.new.po
 	if [ -z "`diff -ud $@ $*.new.po | tail -n +3 | grep '^[-+]' | grep -v 'POT-Creation-Date'`" ]; then \
 		rm $*.new.po; \
 	else \

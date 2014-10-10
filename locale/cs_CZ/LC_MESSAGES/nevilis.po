@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nevilis PHP\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-09 14:26+0200\n"
+"POT-Creation-Date: 2014-10-10 09:04+0200\n"
 "PO-Revision-Date: 2014-10-09 14:27+0100\n"
 "Last-Translator: Vojtech Horky <vhotspur@github.com>\n"
 "Language-Team: cs_CZ\n"
@@ -16,23 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.9\n"
-
-#: views/main.html.php:4
-msgid "Course"
-msgstr "Kurzy"
-
-#: views/main.html.php:5
-msgid "Assignment"
-msgstr "Úloha"
-
-#: views/main.html.php:6 views/course/index.html.php:6
-#: views/admin/assign_edit.html.php:6
-msgid "Deadline"
-msgstr "Termín odevzdání"
-
-#: views/main.html.php:7
-msgid "Remaining time"
-msgstr "Zbývající čas"
 
 #: views/main.html.php:17
 #, php-format
@@ -49,128 +32,102 @@ msgstr "%d hodin"
 msgid "%d minutes"
 msgstr "%d minut"
 
-#: views/main.html.php:27
-msgid "No active assignments."
-msgstr "Žádné běžící úlohy."
+#: views/admin/assign_edit.html.php:4
+msgid "Active"
+msgstr "Aktivní"
 
-#: views/password.html.php:3
-msgid "Current password"
-msgstr "Současné heslo"
+#: controllers/admin.assignments.php:33
+msgid "Add assignment"
+msgstr "Přidat úlohu"
 
-#: views/password.html.php:6
-msgid "New password"
-msgstr "Nové heslo"
+#: controllers/admin.course.php:10
+msgid "Add course"
+msgstr "Přidat kurz"
 
-#: views/password.html.php:9
-msgid "Verify new password"
-msgstr "Ověření nového hesla"
+#: controllers/admin.user.php:10
+msgid "Add user"
+msgstr "Přidat uživatele"
 
-#: views/password.html.php:12
-msgid "Change the password"
-msgstr "Změnit heslo"
-
-#: views/course/index.html.php:4
-msgid "Assignment name"
-msgstr "Název úlohy"
-
-#: views/course/index.html.php:5 views/layout/default.html.php:27
-msgid "Grade"
-msgstr "Známky"
-
-#: views/course/index.html.php:7
-msgid "Comment"
-msgstr "Komentář"
-
-#: views/course/index.html.php:20
-msgid "No assignments yet."
-msgstr "Zatím nebyly zadány žádné úlohy."
-
-#: views/login.html.php:3 views/login.html.php:11 controllers/auth.php:4
-msgid "Log in"
-msgstr "Přihlásit se"
-
-#: views/login.html.php:5
-msgid "User name"
-msgstr "Uživatelské jméno"
-
-#: views/login.html.php:8
-msgid "Password"
-msgstr "Heslo"
-
-#: views/layout/default.html.php:14
-msgid "Menu"
-msgstr "Navigace"
-
-#: views/layout/default.html.php:16
-msgid "Home"
-msgstr "Domů"
-
-#: views/layout/default.html.php:21 controllers/admin.php:4
+#: controllers/admin.php:4 views/layout/default.html.php:21
 msgid "Administration"
 msgstr "Administrace"
 
-#: views/layout/default.html.php:22
-msgid "Users"
-msgstr "Uživatelé"
-
-#: views/layout/default.html.php:23
-msgid "Courses"
-msgstr "Kurzy"
-
-#: views/layout/default.html.php:24
-msgid "Enroll"
-msgstr "Zapsat"
-
-#: views/layout/default.html.php:25
-msgid "Assignments"
-msgstr "Úlohy"
+#: views/admin/download_whole_course.html.php:7
+#: views/admin/download_whole_course.html.php:23
+msgid "All"
+msgstr "Vše"
 
 #: views/layout/default.html.php:26
 msgid "Assign"
 msgstr "Zadat"
 
-#: views/layout/default.html.php:28
-msgid "Mass download"
-msgstr "Stažení"
+#: views/main.html.php:5
+msgid "Assignment"
+msgstr "Úloha"
 
-#: views/layout/default.html.php:31
-msgid "Change password"
-msgstr "Změnit heslo"
-
-#: views/layout/default.html.php:32
-msgid "Log out"
-msgstr "Odhlásit se"
-
-#: views/admin/main.html.php:1
-msgid "Select from the main menu."
-msgstr "Vyberte z hlavního menu."
+#: controllers/admin.assignments.php:4
+msgid "Assignment administration"
+msgstr "Správa úloh"
 
 #: views/admin/assignment_edit.html.php:3
 msgid "Assignment id (part or URL)"
 msgstr "Id úlohy (součást URL)"
 
-#: views/admin/assignment_edit.html.php:8 views/admin/user_edit.html.php:8
-#: views/admin/course_edit.html.php:8
-msgid "cannot be changed"
-msgstr "nelze změnit"
+#: views/course/index.html.php:4
+msgid "Assignment name"
+msgstr "Název úlohy"
 
-#: views/admin/assignment_edit.html.php:11
-msgid "Name"
-msgstr "Jméno"
+#: controllers/admin.assignments.php:95
+msgid "Assignment not found."
+msgstr "Úloha nebyla nalezena."
 
-#: views/admin/user_edit.html.php:3
-msgid "User login name"
-msgstr "Uživatelské jméno"
+#: controllers/main.php:4
+msgid "Assignment submission system"
+msgstr "Systém pro odesílání úloh"
 
-#: views/admin/user_edit.html.php:11
-msgid "Real name"
-msgstr "Skutečné jméno"
+#: controllers/admin.assignments.php:86
+msgid "Assignment succesfully created."
+msgstr "Úloha byla vytvořena."
 
-#: views/admin/user_edit.html.php:13 views/admin/course_edit.html.php:14
-#: views/admin/grade_whole_course.html.php:35
-#: views/admin/assign_edit.html.php:20 views/admin/enroll_edit.html.php:15
-msgid "Update"
-msgstr "Aktualizovat"
+#: controllers/admin.assignments.php:146
+msgid "Assignment succesfully updated."
+msgstr "Úloha byla upravena."
+
+#: views/admin/assign_edit.html.php:5
+msgid "Assignment title"
+msgstr "Název úlohy"
+
+#: views/layout/default.html.php:25
+msgid "Assignments"
+msgstr "Úlohy"
+
+#: controllers/admin.assign.php:65
+msgid "Assignments succesfully assigned."
+msgstr "Úlohy byly zadány."
+
+#: views/layout/default.html.php:31
+msgid "Change password"
+msgstr "Změnit heslo"
+
+#: views/password.html.php:12
+msgid "Change the password"
+msgstr "Změnit heslo"
+
+#: views/course/index.html.php:7
+msgid "Comment"
+msgstr "Komentář"
+
+#: views/main.html.php:4
+msgid "Course"
+msgstr "Kurzy"
+
+#: controllers/admin.course.php:4
+msgid "Course administration"
+msgstr "Správa kurzů"
+
+#: controllers/admin.assign.php:4
+msgid "Course assignments administration"
+msgstr "Správa přiřazení úloh do kurzů"
 
 #: views/admin/course_edit.html.php:3
 msgid "Course id (part of URL)"
@@ -184,149 +141,14 @@ msgstr "Název kurzu"
 msgid "Course name displayed to the administrator"
 msgstr "Název kurzu pro administrátora"
 
-#: views/admin/grade_main.html.php:6
-msgid "Printable"
-msgstr "Verze pro tisk"
-
-#: views/admin/user_list.html.php:14
-msgid "Reset passwords"
-msgstr "Resetovat hesla"
-
-#: views/admin/grade_whole_course.html.php:5
-#: views/admin/grade_whole_course_print.html.php:3
-#: views/admin/download_whole_course.html.php:3
-msgid "User"
-msgstr "Uživatel"
-
-#: views/admin/user_reset_password.html.php:15
-msgid "Reset password for selected users"
-msgstr "Resetovat hesla vybraným uživatelům"
-
-#: views/admin/download_whole_course.html.php:7
-#: views/admin/download_whole_course.html.php:23
-msgid "All"
-msgstr "Vše"
-
-#: views/admin/download_whole_course.html.php:14
-#: views/admin/download_whole_course.html.php:19
-#: views/admin/download_whole_course.html.php:25
-#: views/admin/download_whole_course.html.php:27
-msgid "Download"
-msgstr "Stáhnout"
-
-#: views/admin/download_whole_course.html.php:16
-msgid "Not uploaded."
-msgstr "Soubor nebyl nahrán."
-
-#: views/admin/assign_edit.html.php:4
-msgid "Active"
-msgstr "Aktivní"
-
-#: views/admin/assign_edit.html.php:5
-msgid "Assignment title"
-msgstr "Název úlohy"
-
-#: views/admin/assign_edit.html.php:7
-msgid "Deadline (disable upload)"
-msgstr "Termín odevzdání (nejde nahrávat)"
-
-#: views/assignment/index.html.php:1
-msgid "Your grade"
-msgstr "Vaše hodnocení"
-
-#: views/assignment/index.html.php:6
-msgid "Description"
-msgstr "Popis"
-
-#: views/assignment/index.html.php:12
-msgid "Files"
-msgstr "Soubory"
-
-#: views/assignment/index.html.php:21
-msgid "Download your file"
-msgstr "Stáhnout váš soubor"
-
-#: views/assignment/index.html.php:23
-msgid "File not yet uploaded."
-msgstr "Soubor nebyl dosud nahrán."
-
-#: views/assignment/index.html.php:35
-msgid "Upload files..."
-msgstr "Nahrát soubory..."
-
-#: lib/file.validation.php:5
-msgid "JPEG image"
-msgstr "JPEG obrázek"
-
-#: lib/file.validation.php:6
-msgid "not a JPEG image"
-msgstr "nejde o JPEG obrázek"
-
-#: lib/file.validation.php:10
-msgid "PNG image"
-msgstr "PNG obrázek"
-
-#: lib/file.validation.php:11
-msgid "not a PNG image"
-msgstr "nejde o PNG obrázek"
-
-#: lib/file.validation.php:29
-#, php-format
-msgid "unknown file validator %s"
-msgstr "neznámý validátor souborů %s"
-
-#: lib/check.php:9
-msgid "Unknown course or you are not member of that group."
-msgstr "Neznámý kurz nebo nejste do tohoto kurzu zapsáni."
-
-#: controllers/file.php:14
-msgid "File not uploaded."
-msgstr "Soubor nebyl nahrán."
-
-#: controllers/file.php:31
-#, php-format
-msgid "File %s not found, contact administrator."
-msgstr "Soubor %s nebyl nalezen, upozorněte administrátora."
-
-#: controllers/admin.enroll.php:4
-msgid "User enrollment administration"
-msgstr "Správa přiřazení uživatelů do kurzů"
-
-#: controllers/admin.enroll.php:13 controllers/admin.enroll.php:39
-#: controllers/admin.course.php:24 controllers/admin.grade.php:13
-#: controllers/admin.grade.php:73 controllers/admin.download.php:17
-#: controllers/admin.download.php:71 controllers/admin.download.php:95
-#: controllers/admin.download.php:123 controllers/admin.download.php:150
 #: controllers/admin.assign.php:13 controllers/admin.assign.php:43
+#: controllers/admin.download.php:17 controllers/admin.download.php:71
+#: controllers/admin.download.php:95 controllers/admin.download.php:123
+#: controllers/admin.download.php:150 controllers/admin.enroll.php:13
+#: controllers/admin.enroll.php:39 controllers/admin.course.php:24
+#: controllers/admin.grade.php:13 controllers/admin.grade.php:73
 msgid "Course not found"
 msgstr "Kurz nebyl nalezen"
-
-#: controllers/admin.enroll.php:28
-#, php-format
-msgid "Enroll users for %s (%s)"
-msgstr "Zapsat uživatele do %s (%s)"
-
-#: controllers/admin.enroll.php:52
-msgid "Users succesfully enrolled."
-msgstr "Uživatelé byli úspěšně zapsáni."
-
-#: controllers/admin.course.php:4
-msgid "Course administration"
-msgstr "Správa kurzů"
-
-#: controllers/admin.course.php:10
-msgid "Add course"
-msgstr "Přidat kurz"
-
-#: controllers/admin.course.php:19
-msgid "Edit existing course"
-msgstr "Úprava existujícího kurzu"
-
-#: controllers/admin.course.php:45 controllers/admin.course.php:64
-#: controllers/admin.assignments.php:51 controllers/admin.assignments.php:113
-#: controllers/admin.user.php:40 controllers/admin.user.php:56
-msgid "You need to fill-in all the values."
-msgstr "Musíte vyplnit všechny políčka."
 
 #: controllers/admin.course.php:50
 msgid "Course succesfully created."
@@ -336,34 +158,106 @@ msgstr "Kurz byl vytvořen."
 msgid "Course succesfully updated."
 msgstr "Kurz byl upraven."
 
-#: controllers/admin.assignments.php:4
-msgid "Assignment administration"
-msgstr "Správa úloh"
+#: views/layout/default.html.php:23
+msgid "Courses"
+msgstr "Kurzy"
 
-#: controllers/admin.assignments.php:33
-msgid "Add assignment"
-msgstr "Přidat úlohu"
+#: views/password.html.php:3
+msgid "Current password"
+msgstr "Současné heslo"
 
-#: controllers/admin.assignments.php:86
-msgid "Assignment succesfully created."
-msgstr "Úloha byla vytvořena."
+#: views/admin/assign_edit.html.php:6 views/course/index.html.php:6
+#: views/main.html.php:6
+msgid "Deadline"
+msgstr "Termín odevzdání"
 
-#: controllers/admin.assignments.php:95
-msgid "Assignment not found."
-msgstr "Úloha nebyla nalezena."
+#: views/admin/assign_edit.html.php:7
+msgid "Deadline (disable upload)"
+msgstr "Termín odevzdání (nejde nahrávat)"
+
+#: views/assignment/index.html.php:6
+msgid "Description"
+msgstr "Popis"
+
+#: views/admin/download_whole_course.html.php:14
+#: views/admin/download_whole_course.html.php:19
+#: views/admin/download_whole_course.html.php:25
+#: views/admin/download_whole_course.html.php:27
+msgid "Download"
+msgstr "Stáhnout"
+
+#: controllers/admin.download.php:8
+msgid "Download solutions"
+msgstr "Stáhnout řešení"
+
+#: controllers/admin.download.php:38
+#, php-format
+msgid "Download solutions for %s (%s)"
+msgstr "Stáhnout řešení pro %s (%s)"
+
+#: views/assignment/index.html.php:21
+msgid "Download your file"
+msgstr "Stáhnout váš soubor"
 
 #: controllers/admin.assignments.php:99
 #, php-format
 msgid "Edit assignment %s"
 msgstr "Úprava úlohy %s"
 
-#: controllers/admin.assignments.php:146
-msgid "Assignment succesfully updated."
-msgstr "Úloha byla upravena."
+#: controllers/admin.course.php:19
+msgid "Edit existing course"
+msgstr "Úprava existujícího kurzu"
 
-#: controllers/admin.grade.php:4
-msgid "Grading administration"
-msgstr "Správa známek"
+#: controllers/admin.user.php:18
+msgid "Edit existing user"
+msgstr "Úprava uživatele"
+
+#: views/layout/default.html.php:24
+msgid "Enroll"
+msgstr "Zapsat"
+
+#: controllers/admin.enroll.php:28
+#, php-format
+msgid "Enroll users for %s (%s)"
+msgstr "Zapsat uživatele do %s (%s)"
+
+#: controllers/assignment.php:77
+msgid "Failed to prepare directory structure. Contact administrator."
+msgstr ""
+"Nepodařilo se připravit adresářovou strukturu. Upozorněte administrátora."
+
+#: controllers/file.php:31
+#, php-format
+msgid "File %s not found, contact administrator."
+msgstr "Soubor %s nebyl nalezen, upozorněte administrátora."
+
+#: controllers/file.php:14
+msgid "File not uploaded."
+msgstr "Soubor nebyl nahrán."
+
+#: views/assignment/index.html.php:23
+msgid "File not yet uploaded."
+msgstr "Soubor nebyl dosud nahrán."
+
+#: controllers/assignment.php:63
+msgid "File uploading is prohibited at the moment."
+msgstr "Teď není možné nahrávat soubory."
+
+#: views/assignment/index.html.php:12
+msgid "Files"
+msgstr "Soubory"
+
+#: controllers/assignment.php:120
+msgid ""
+"Following files were uploaded (to verify they are not damaged, try to "
+"download them):"
+msgstr ""
+"Následující soubory byly nahrány (zkuste je zpětně stáhnout, abyste ověřili "
+"jejich správnost):"
+
+#: views/course/index.html.php:5 views/layout/default.html.php:27
+msgid "Grade"
+msgstr "Známky"
 
 #: controllers/admin.grade.php:51
 #, php-format
@@ -374,17 +268,174 @@ msgstr "Známky pro %s (%s)"
 msgid "Grades updated."
 msgstr "Známky byly upraveny."
 
+#: controllers/admin.grade.php:4
+msgid "Grading administration"
+msgstr "Správa známek"
+
+#: views/layout/default.html.php:16
+msgid "Home"
+msgstr "Domů"
+
+#: controllers/auth.php:18
+msgid "Invalid username/password."
+msgstr "Neplatné uživatelské jméno nebo heslo."
+
+#: lib/file.validation.php:5
+msgid "JPEG image"
+msgstr "JPEG obrázek"
+
+#: controllers/auth.php:4 views/login.html.php:3 views/login.html.php:11
+msgid "Log in"
+msgstr "Přihlásit se"
+
+#: views/layout/default.html.php:32
+msgid "Log out"
+msgstr "Odhlásit se"
+
+#: views/layout/default.html.php:28
+msgid "Mass download"
+msgstr "Stažení"
+
+#: views/layout/default.html.php:14
+msgid "Menu"
+msgstr "Navigace"
+
+#: views/admin/assignment_edit.html.php:11
+msgid "Name"
+msgstr "Jméno"
+
+#: views/password.html.php:6
+msgid "New password"
+msgstr "Nové heslo"
+
+#: views/main.html.php:27
+msgid "No active assignments."
+msgstr "Žádné běžící úlohy."
+
+#: views/course/index.html.php:20
+msgid "No assignments yet."
+msgstr "Zatím nebyly zadány žádné úlohy."
+
+#: views/admin/download_whole_course.html.php:16
+msgid "Not uploaded."
+msgstr "Soubor nebyl nahrán."
+
+#: lib/file.validation.php:10
+msgid "PNG image"
+msgstr "PNG obrázek"
+
+#: views/login.html.php:8
+msgid "Password"
+msgstr "Heslo"
+
+#: controllers/auth.php:32
+msgid "Password change"
+msgstr "Změna hesla"
+
+#: controllers/admin.user.php:68
+msgid "Password reset"
+msgstr "Reset hesel."
+
+#: controllers/auth.php:43
+msgid "Password too short."
+msgstr "Heslo je příliš krátké."
+
+#: controllers/auth.php:53
+msgid "Password updated."
+msgstr "Heslo bylo změněno."
+
+#: controllers/auth.php:47 controllers/auth.php:56
+msgid "Passwords do not match."
+msgstr "Hesla nesouhlasí."
+
+#: controllers/admin.user.php:92
+msgid "Passwords were reset."
+msgstr "Hesla byla vyresetována."
+
+#: index.php:30
+msgid "Please, log in again."
+msgstr "Přihlašte se, prosím, znovu."
+
+#: views/admin/grade_main.html.php:6
+msgid "Printable"
+msgstr "Verze pro tisk"
+
+#: views/admin/user_edit.html.php:11
+msgid "Real name"
+msgstr "Skutečné jméno"
+
+#: views/main.html.php:7
+msgid "Remaining time"
+msgstr "Zbývající čas"
+
+#: views/admin/user_reset_password.html.php:15
+msgid "Reset password for selected users"
+msgstr "Resetovat hesla vybraným uživatelům"
+
+#: views/admin/user_list.html.php:14
+msgid "Reset passwords"
+msgstr "Resetovat hesla"
+
+#: views/admin/main.html.php:1
+msgid "Select from the main menu."
+msgstr "Vyberte z hlavního menu."
+
+#: controllers/admin.assign.php:32
+#, php-format
+msgid "Set assignments for %s (%s)"
+msgstr "Nastavení úloh pro %s (%s)"
+
+#: controllers/assignment.php:69
+msgid "The files you are uploading are way too big."
+msgstr "Vámi nahrávané soubory jsou příliš veliké."
+
+#: controllers/assignment.php:32
+msgid "Uknown assignment selected."
+msgstr "Byla vybrána neznámá úloha."
+
+#: controllers/course.php:10 controllers/assignment.php:24
+msgid "Uknown course selected."
+msgstr "Byl vybrán neznámý kurz."
+
+#: lib/check.php:9
+msgid "Unknown course or you are not member of that group."
+msgstr "Neznámý kurz nebo nejste do tohoto kurzu zapsáni."
+
+#: views/admin/grade_whole_course.html.php:35
+#: views/admin/user_edit.html.php:13 views/admin/course_edit.html.php:14
+#: views/admin/assign_edit.html.php:20 views/admin/enroll_edit.html.php:15
+msgid "Update"
+msgstr "Aktualizovat"
+
+#: views/assignment/index.html.php:35
+msgid "Upload files..."
+msgstr "Nahrát soubory..."
+
+#: controllers/assignment.php:130
+msgid "Upload of following files failed:"
+msgstr "Následující soubory se nepodařilo nahrát:"
+
+#: views/admin/grade_whole_course.html.php:5
+#: views/admin/download_whole_course.html.php:3
+#: views/admin/grade_whole_course_print.html.php:3
+msgid "User"
+msgstr "Uživatel"
+
 #: controllers/admin.user.php:4
 msgid "User administration"
 msgstr "Správa uživatell."
 
-#: controllers/admin.user.php:10
-msgid "Add user"
-msgstr "Přidat uživatele"
+#: controllers/admin.enroll.php:4
+msgid "User enrollment administration"
+msgstr "Správa přiřazení uživatelů do kurzů"
 
-#: controllers/admin.user.php:18
-msgid "Edit existing user"
-msgstr "Úprava uživatele"
+#: views/admin/user_edit.html.php:3
+msgid "User login name"
+msgstr "Uživatelské jméno"
+
+#: views/login.html.php:5
+msgid "User name"
+msgstr "Uživatelské jméno"
 
 #: controllers/admin.user.php:23
 msgid "User not found"
@@ -398,120 +449,69 @@ msgstr "Uživatel byl vytvořen."
 msgid "User succesfully updated."
 msgstr "Uživatel byl upraven."
 
-#: controllers/admin.user.php:68
-msgid "Password reset"
-msgstr "Reset hesel."
+#: views/layout/default.html.php:22
+msgid "Users"
+msgstr "Uživatelé"
 
-#: controllers/admin.user.php:92
-msgid "Passwords were reset."
-msgstr "Hesla byla vyresetována."
+#: controllers/admin.enroll.php:52
+msgid "Users succesfully enrolled."
+msgstr "Uživatelé byli úspěšně zapsáni."
 
-#: controllers/main.php:4
-msgid "Assignment submission system"
-msgstr "Systém pro odesílání úloh"
-
-#: controllers/course.php:10 controllers/assignment.php:24
-msgid "Uknown course selected."
-msgstr "Byl vybrán neznámý kurz."
-
-#: controllers/assignment.php:32
-msgid "Uknown assignment selected."
-msgstr "Byla vybrána neznámá úloha."
-
-#: controllers/assignment.php:63
-msgid "File uploading is prohibited at the moment."
-msgstr "Teď není možné nahrávat soubory."
-
-#: controllers/assignment.php:69
-msgid "The files you are uploading are way too big."
-msgstr "Vámi nahrávané soubory jsou příliš veliké."
-
-#: controllers/assignment.php:77
-msgid "Failed to prepare directory structure. Contact administrator."
-msgstr ""
-"Nepodařilo se připravit adresářovou strukturu. Upozorněte administrátora."
-
-#: controllers/assignment.php:111
-msgid "failed to move to permanent storage"
-msgstr "nepodařilo se přesunou do cílového umístění"
-
-#: controllers/assignment.php:120
-msgid ""
-"Following files were uploaded (to verify they are not damaged, try to "
-"download them):"
-msgstr ""
-"Následující soubory byly nahrány (zkuste je zpětně stáhnout, abyste ověřili "
-"jejich správnost):"
-
-#: controllers/assignment.php:130
-msgid "Upload of following files failed:"
-msgstr "Následující soubory se nepodařilo nahrát:"
-
-#: controllers/admin.download.php:8
-msgid "Download solutions"
-msgstr "Stáhnout řešení"
-
-#: controllers/admin.download.php:38
-#, php-format
-msgid "Download solutions for %s (%s)"
-msgstr "Stáhnout řešení pro %s (%s)"
+#: views/password.html.php:9
+msgid "Verify new password"
+msgstr "Ověření nového hesla"
 
 #: controllers/auth.php:15
 msgid "You have been logged in."
 msgstr "Byli jste přihlášeni."
 
-#: controllers/auth.php:18
-msgid "Invalid username/password."
-msgstr "Neplatné uživatelské jméno nebo heslo."
-
 #: controllers/auth.php:26
 msgid "You have been logged out."
 msgstr "Byli jste odhlášeni."
 
-#: controllers/auth.php:32
-msgid "Password change"
-msgstr "Změna hesla"
+#: controllers/admin.assignments.php:51 controllers/admin.assignments.php:113
+#: controllers/admin.user.php:40 controllers/admin.user.php:56
+#: controllers/admin.course.php:45 controllers/admin.course.php:64
+msgid "You need to fill-in all the values."
+msgstr "Musíte vyplnit všechny políčka."
 
-#: controllers/auth.php:43
-msgid "Password too short."
-msgstr "Heslo je příliš krátké."
+#: views/assignment/index.html.php:1
+msgid "Your grade"
+msgstr "Vaše hodnocení"
 
-#: controllers/auth.php:47 controllers/auth.php:56
-msgid "Passwords do not match."
-msgstr "Hesla nesouhlasí."
+#: views/admin/user_edit.html.php:8 views/admin/assignment_edit.html.php:8
+#: views/admin/course_edit.html.php:8
+msgid "cannot be changed"
+msgstr "nelze změnit"
 
-#: controllers/auth.php:53
-msgid "Password updated."
-msgstr "Heslo bylo změněno."
+#: controllers/assignment.php:111
+msgid "failed to move to permanent storage"
+msgstr "nepodařilo se přesunou do cílového umístění"
 
-#: controllers/admin.assign.php:4
-msgid "Course assignments administration"
-msgstr "Správa přiřazení úloh do kurzů"
+#: lib/file.validation.php:6
+msgid "not a JPEG image"
+msgstr "nejde o JPEG obrázek"
 
-#: controllers/admin.assign.php:32
+#: lib/file.validation.php:11
+msgid "not a PNG image"
+msgstr "nejde o PNG obrázek"
+
+#: lib/file.validation.php:29
 #, php-format
-msgid "Set assignments for %s (%s)"
-msgstr "Nastavení úloh pro %s (%s)"
+msgid "unknown file validator %s"
+msgstr "neznámý validátor souborů %s"
 
-#: controllers/admin.assign.php:65
-msgid "Assignments succesfully assigned."
-msgstr "Úlohy byly zadány."
-
-#: index.php:30
-msgid "Please, log in again."
-msgstr "Přihlašte se, prosím, znovu."
-
-#~ msgid "No courses assigned yet."
-#~ msgstr "Nejste zapsáni v žádném kurzu."
+#~ msgid "Change your password."
+#~ msgstr "Změnit heslo."
 
 #~ msgid "Currently logged in user"
 #~ msgstr "Právě přihlášený uživatel"
 
-#~ msgid "log out"
-#~ msgstr "odhlásit se"
-
 #~ msgid "Go to list of courses."
 #~ msgstr "Přejít na seznam kurzů."
 
-#~ msgid "Change your password."
-#~ msgstr "Změnit heslo."
+#~ msgid "No courses assigned yet."
+#~ msgstr "Nejste zapsáni v žádném kurzu."
+
+#~ msgid "log out"
+#~ msgstr "odhlásit se"
