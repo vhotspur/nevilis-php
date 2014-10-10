@@ -16,7 +16,7 @@ function flash_format_all() {
 	foreach ($names as $a) {
 		$fl = flash_now($a);
 		if ($fl != null) {
-			$result .= sprintf("<p class=\"%s\">%s</p>\n",
+			$result .= sprintf("<div class=\"%s\">%s</div>\n",
 				$a, $fl);
 		}
 	}
