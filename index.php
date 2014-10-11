@@ -20,6 +20,8 @@ function before_exit($exiting) {
 function before($route) {
 	$handler = $route["callback"];
 	
+	set('glob_flash', flash_format_all());
+	
 	$auth_check_skip_pages = array("page_auth_login", "page_auth_do_login", "page_auth_logout");
 	if (array_search($handler, $auth_check_skip_pages) !== false) {
 		set('glob_body_css_class', 'auth');
@@ -33,7 +35,6 @@ function before($route) {
 	}
 	
 	set('glob_user_courses', data_get_course_list_for_user(auth_get_current_user()));
-	set('glob_flash', flash_format_all());
 }
 
 function configure() {
