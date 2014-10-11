@@ -12,7 +12,6 @@ function page_auth_do_login() {
 	$ok = auth_check_user_and_start_session($user, $password);
 	
 	if ($ok) {
-		flash('info', _('You have been logged in.'));
 		redirect('/');
 	} else {
 		flash('error', _('Invalid username/password.'));
@@ -22,8 +21,6 @@ function page_auth_do_login() {
 
 function page_auth_logout() {
 	auth_close_session();
-	
-	flash('info', _('You have been logged out.'));
 	
 	redirect('/');
 }
