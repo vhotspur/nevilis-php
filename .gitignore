@@ -7,4 +7,5 @@ dev_files/
 
 *.mo
 nevilis.pot
+config.php
 

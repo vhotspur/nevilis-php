@@ -1,0 +1,19 @@
+<?php
+
+function nevilis_configure() {
+	/*
+	 * Path where files are stored.
+	 */
+	option('file_dir', 'dev_files');
+	
+	/*
+	 * Path to the database in the format understood by the
+	 * PHP PDO adapter.
+	 */
+	option('database', 'sqlite:db/dev.db');
+	
+	/*
+	 * Language of your choice.
+	 */
+	option('l10n', 'en_US.utf8');
+}

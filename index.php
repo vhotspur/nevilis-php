@@ -2,6 +2,7 @@
 require_once 'lib/limonade.php';
 require_once 'lib/db.php';
 require_once 'lib/auth.php';
+@include_once 'config.php';
 
 session_start();
 assert_options(ASSERT_ACTIVE, 1);
@@ -38,12 +39,17 @@ function before($route) {
 }
 
 function configure() {
-	$db = new PDO('sqlite:db/dev.db');
+	option('file_dir', 'dev_files');
+	option('database', 'sqlite:db/dev.db');
+	option('l10n', 'en_US.utf8');
+	
+	if (function_exists('nevilis_configure')) {
+		nevilis_configure();
+	}
+	
+	$db = new PDO(option('database'));
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	option('db_conn', $db);
-	option('file_dir', 'dev_files/');
-	// TODO: per user selection
-	option('l10n', 'cs_CZ.utf8');
 	
 	$lang = option('l10n');
 	putenv("LC_ALL=$lang");
