@@ -7,6 +7,8 @@ function data_get_user_list() {
 			name
 		FROM
 			user
+		ORDER BY
+			uid ASC
 		");
 }
 

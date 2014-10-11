@@ -8,6 +8,8 @@ function data_get_assignment_list() {
 			description
 		FROM
 			assignment
+		ORDER BY
+			name ASC
 		");
 }
 
@@ -49,6 +51,8 @@ function data_get_assignments_for_course($course) {
 		WHERE
 			assignment.aid = courseassignment.assignment
 			AND course = :course
+		ORDER BY
+			courseassignment.deadline
 		", array("course" => $course));
 }
 
@@ -66,6 +70,8 @@ function data_get_assigments_and_grades_for_course($user, $course) {
 			JOIN courseassignment ON aid=courseassignment.assignment
 		WHERE
 			course=:course
+		ORDER BY
+			courseassignment.deadline
 		", array("course" => $course));
 
 	if ($assignments == null) {
@@ -113,6 +119,8 @@ function data_get_assignment_files($assignment) {
 			assignmentfile
 		WHERE
 			assignment = :assignment
+		ORDER BY
+			name
 		", array("assignment" => $assignment));
 	foreach ($files as &$f) {
 		$f->validation = explode(",", $f->validation);

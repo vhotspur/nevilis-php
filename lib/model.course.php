@@ -7,7 +7,11 @@ function data_get_course_list() {
     			name,
 			adminname
     		FROM
-    			course");
+    			course
+		ORDER BY
+			name ASC,
+			adminname ASC
+		");
 }
 
 function data_get_course_list_for_user($user) {
@@ -21,6 +25,8 @@ function data_get_course_list_for_user($user) {
     		JOIN courseusers on course.cid=courseusers.course
     	WHERE
     		user=:user
+    	ORDER BY
+    		name
     	", array("user" => $user));
 }
 
@@ -68,6 +74,8 @@ function data_get_enrolled_users($course) {
 		WHERE
 			user.uid = courseusers.user
 			AND course = :course
+		ORDER BY
+			user.uid ASC
 		", array("course" => $course));
 }
 
