@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Nevilis PHP\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-10 10:20+0200\n"
-"PO-Revision-Date: 2014-10-09 14:27+0100\n"
+"PO-Revision-Date: 2014-10-11 20:18+0100\n"
 "Last-Translator: Vojtech Horky <vhotspur@github.com>\n"
 "Language-Team: cs_CZ\n"
 "Language: cs_CZ\n"
@@ -257,7 +257,7 @@ msgstr ""
 
 #: views/course/index.html.php:5 views/layout/default.html.php:27
 msgid "Grade"
-msgstr "Známky"
+msgstr "Hodnocení"
 
 #: controllers/admin.grade.php:51
 #, php-format
@@ -423,7 +423,7 @@ msgstr "Uživatel"
 
 #: controllers/admin.user.php:4
 msgid "User administration"
-msgstr "Správa uživatell."
+msgstr "Správa uživatelů"
 
 #: controllers/admin.enroll.php:4
 msgid "User enrollment administration"
