@@ -17,8 +17,10 @@
 		$comment_field = sprintf('comment_%s_%s', $a->aid, $u->uid);
 		$locked_field = sprintf('locked_%s_%s', $a->aid, $u->uid);
 		$locked_checked = $info->locked ? 'checked="checked"' : '';
+		$usercomment = $info->usercomment;
 		?>
 		<td>
+			%if $usercomment != ""%<i>{$usercomment/h}</i><br />%endif%
 			Last upload: <?php echo h($info->last_upload); ?>
 			<br />
 			<input type="text" name="<?php echo h($grade_field); ?>" value="<?php echo h($info->grade); ?>" size="3" />

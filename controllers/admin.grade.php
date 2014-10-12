@@ -43,6 +43,7 @@ function prepare_grades_for_course() {
 				$last_upload = date('Y-m-d H:i:s', $highest_timestamp);
 			}
 			$grade_info->grade->last_upload = $last_upload;
+			$grade_info->grade->usercomment = $grade_info->usercomment;
 			$u->assignments[ $a->aid ] = $grade_info->grade;
 		}
 	}

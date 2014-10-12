@@ -228,6 +228,22 @@ function data_get_assignment_details_for_user($assignment, $user) {
 		$info->locked = $info->grade->locked > 0;
 	}
 	
+	$usercomment = db_find_object("get user comment",
+		"SELECT
+			comment
+		FROM
+			assignmentcomment
+		WHERE
+			user = :user
+			AND assignment = :assignment",
+		array("assignment" => $assignment, "user" => $user)
+	);
+	if ($usercomment == null) {
+		$info->usercomment = "";
+	} else {
+		$info->usercomment = $usercomment->comment;
+	}
+	
 	return $info;
 }
 
@@ -298,5 +314,21 @@ function data_update_grades($grades) {
 		}
 		
 		db_create_object_from_array("add a grade", $grade, 'grade');
+	}
+}
+
+function data_update_user_comment_for_assignment($user, $assignment, $comment) {
+	db_delete_objects("delete previous user comment", 'assignmentcomment',
+		array(
+			"user" => $user,
+			"assignment" => $assignment
+	));
+	if ($comment != "") {
+		db_create_object_from_array("insert new comment",
+			array(
+				"user" => $user,
+				"assignment" => $assignment,
+				"comment" => $comment
+		), 'assignmentcomment');
 	}
 }

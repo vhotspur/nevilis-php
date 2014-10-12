@@ -150,6 +150,9 @@ FORM.files FIELDSET LEGEND {
 	margin: 0;
 	font-size: 120%;
 }
+FORM.files FIELDSET.usercomment TEXTAREA {
+	width: 100%;
+}
 BODY.auth FORM {
 	text-align: center;
 }

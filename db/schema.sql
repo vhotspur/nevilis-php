@@ -26,6 +26,11 @@ CREATE TABLE "submittedfile" (
 	`file`	INTEGER NOT NULL,
 	`upload_date` DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+CREATE TABLE `assignmentcomment` (
+	`assignment`	TEXT,
+	`user`	TEXT,
+	`comment`	TEXT
+);
 CREATE TABLE "grade" (
 	`user`	TEXT,
 	`assignment`	TEXT,

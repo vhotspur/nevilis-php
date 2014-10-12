@@ -40,6 +40,7 @@ function page_assignment_main() {
 	set('description', $info->description);
 	set('files', $info->files);
 	set('grade', $info->grade);
+	set('usercomment', $info->usercomment);
 	set('can_upload', can_upload($info->locked, $info->deadline_noupload));
 	
 	return html('assignment/index.html.php');
@@ -69,6 +70,10 @@ function page_assignment_do_upload() {
 		flash('error', _('The files you are uploading are way too big.'));
 		redirect_to($course_id, $assignment_id);
 	}
+	
+	$usercomment = v_post('comment', '');
+	data_update_user_comment_for_assignment(auth_get_current_user(),
+		$assignment_id, $usercomment);
 	
 	/* First, prepare the directory where to store them. */
 	$target_directory = sprintf("%s/%s/%s", option('file_dir'), auth_get_current_user(), $assignment_id);
