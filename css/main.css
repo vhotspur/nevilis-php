@@ -25,6 +25,7 @@ ADDRESS#footer {
 	text-align: center;
 	font-size: 90%;
 	font-style: italic;
+	padding: 2em 3em 1em 3em;
 }
 
 H1 {
@@ -141,7 +142,7 @@ TABLE.assignments TD.name, TABLE.assignments TD.comment {
 FORM.files FIELDSET {
 	border: 0px none;
 	margin: 0 0 1em 0;
-	padding: 0;
+	padding: 0 0 1ex 0;
 	border-bottom: 1px solid #ccc;
 }
 FORM.files FIELDSET LEGEND {
