@@ -64,6 +64,10 @@
 	}
 ?>
 </div>
+<address id="footer">
+%_Nevilis PHP is powered by Limonade PHP. Report bugs to ..._%
+%if !@empty($glob_footer)%<br />{$glob_footer}%endif% 
+</address>
 </div>
 </body>
 </html>

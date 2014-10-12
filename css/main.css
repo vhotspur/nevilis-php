@@ -20,6 +20,12 @@ BODY.auth #content {
 	margin: 1ex auto;
 	width: 40em;
 }
+ADDRESS#footer {
+	clear: both;
+	text-align: center;
+	font-size: 90%;
+	font-style: italic;
+}
 
 H1 {
 	text-align: center;

@@ -22,6 +22,7 @@ function before($route) {
 	$handler = $route["callback"];
 	
 	set('glob_flash', flash_format_all());
+	set('glob_footer', option('footer'));
 	
 	$auth_check_skip_pages = array("page_auth_login", "page_auth_do_login", "page_auth_logout");
 	if (array_search($handler, $auth_check_skip_pages) !== false) {

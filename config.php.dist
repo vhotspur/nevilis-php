@@ -16,4 +16,10 @@ function nevilis_configure() {
 	 * Language of your choice.
 	 */
 	option('l10n', 'en_US.utf8');
+	
+	/*
+	 * Custom text for the footer. This text is not escaped, feel
+	 * free to use HTML tags but also take care of proper escaping ;-).
+	 */
+	option('footer', '');
 }
