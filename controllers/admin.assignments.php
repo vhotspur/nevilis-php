@@ -96,7 +96,7 @@ function page_admin_assignment_edit() {
 		redirect('/admin/assignments');
 	}
 	
-	set('title', sprintf(_('Edit assignment %s'), $aid));
+	set('title', sprintf(_('Edit assignment %s'), $info->name));
 	page_admin_assignment_edit_form($aid, $info, 2);
 	
 	return html('admin/assignment_edit.html.php');
