@@ -1,12 +1,12 @@
 <h2>%_Your grade_%: {$grade->grade|--}</h2>
-%if @$grade->comment != ""%
-	<p>{$grade->comment/h}</p>
-%endif%
+{$grade->comment/h||<p>|</p>}
 
+%if $description != ""%
 <h2>%_Description_%</h2>
 <p>
 {$description/h}
 </p>
+%endif%
 
 %foreach $files $f%
 %before%
