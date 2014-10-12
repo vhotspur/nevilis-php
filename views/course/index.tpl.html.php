@@ -17,7 +17,7 @@
 		$unix_time = strtotime($a->deadline);
 		echo strftime('%c', $unix_time);
 	} else {
-		echo "&mdash";
+		echo "&mdash;";
 	}
 	?></td>
 	<td class="comment">{$a->comment/h|}</td>
