@@ -8,7 +8,7 @@ class emptyglass_transformer {
 	
 	private $tokens_def = array(
 		"variable" => array(
-			"regexp" => '\{(\$[^}\/\|]+)(\/(h))?(\|([^}]*))?\}',
+			"regexp" => '\{(\$[^}\/\|]+)(\/(h))?(\|([^|}]*))?(\|([^|}]*)\|([^|}]*))?\}',
 			"top" => true,
 		),
 		"url" => array(
@@ -99,15 +99,31 @@ class emptyglass_transformer {
 		$variable = $this->expect_token("variable");
 		$name = $variable["parts"][0];
 		$mods = isset($variable["parts"][2]) ? $variable["parts"][2] : "";
-		if (isset($variable["parts"][4])) {
-			$name = sprintf('(@isset(%s) ? %s : "%s")', $name, $name, addslashes($variable["parts"][4]));
-		}
+		$before = isset($variable["parts"][6]) ? $variable["parts"][6] : "";
+		$after = isset($variable["parts"][7]) ? $variable["parts"][7] : "";
 		
 		if ($mods == "h") {
-			$this->add_php_code('echo htmlspecialchars(%s);', $name);
+			$printing = sprintf('echo htmlspecialchars(%s); ', $name);
 		} else {
-			$this->add_php_code('echo %s;', $name);
+			$printing = sprintf('echo %s; ', $name);
 		}
+		
+		if (isset($variable["parts"][4])) {
+			$code = sprintf("if (@isset(%s)) { ", $name);
+			if ($before != "") {
+				$code .= sprintf('echo "%s"; ', addslashes($before));
+			}
+			$code .= $printing;
+			if ($after != "") {
+				$code .= sprintf('echo "%s"; ', addslashes($after));
+			}
+			$code .= "} else { ";
+			$code .= sprintf('echo "%s"; ', addslashes($variable["parts"][4]));
+			$code .= "}";	
+		} else 	{
+			$code = $printing;
+		}
+		$this->add_php_code($code);
 	}
 	
 	private function process_translate() {
@@ -213,8 +229,13 @@ class emptyglass_transformer {
 	private function add_php_code() {
 		$argv = func_get_args();
 		$format = array_shift($argv);
+		if (count($argv) == 0) {
+			$code = '<' . '?php ' . $format . ' ?' . '>';
+		} else {
+			$code = vsprintf('<' . '?php ' . $format . ' ?' . '>', $argv);
+		}
 		
-		$this->add_output_internal(vsprintf('<' . '?php ' . $format . ' ?' . '>', $argv));
+		$this->add_output_internal($code);
 	}
 	
 	private function add_output($str) {
