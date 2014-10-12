@@ -99,6 +99,12 @@ function page_assignment_do_upload() {
 			continue;
 		}
 		
+		if ($_FILES[$field]['size'] > 1024 * $f->maxsize) {
+			$msg = sprintf(_('file is too big, maximum allowed size is %dKB'), $f->maxsize);
+			$failed_files[] = array($f->name, $msg);
+			continue;
+		}
+		
 		$validated = file_validate($_FILES[$field]['tmp_name'], $f->validation);
 		if ($validated !== true) {
 			$failed_files[] = array($f->name, implode(', ', $validated));
