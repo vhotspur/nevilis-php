@@ -24,6 +24,22 @@ function before($route) {
 	set('glob_flash', flash_format_all());
 	set('glob_footer', option('footer'));
 	
+	if (option('sitedown')) {
+		if ($handler != "page_auth_logout") {				
+			if (auth_is_user_logged_in()) {
+				redirect_to('logout');
+			} else {
+				if ($handler != "page_sitedown") {
+					redirect_to('sitedown');
+				}
+			}
+			set('glob_body_css_class', 'sitedown');
+			return;
+		}
+	} else if ($handler == "page_sitedown") {
+		redirect_to('login');
+	}
+	
 	$auth_check_skip_pages = array("page_auth_login", "page_auth_do_login", "page_auth_logout");
 	if (array_search($handler, $auth_check_skip_pages) !== false) {
 		set('glob_body_css_class', 'auth');
@@ -43,6 +59,7 @@ function configure() {
 	option('file_dir', 'dev_files');
 	option('database', 'sqlite:db/dev.db');
 	option('l10n', 'en_US.utf8');
+	option('sitedown', false);
 	
 	if (function_exists('nevilis_configure')) {
 		nevilis_configure();
@@ -69,6 +86,10 @@ function not_found($errno, $errstr, $errfile = null, $errline = null) {
 }
 
 layout('layout/default.html.php');
+
+
+dispatch_post('/sitedown', 'page_sitedown');
+dispatch('/sitedown', 'page_sitedown');
 
 if (auth_is_user_logged_in()) {
 	dispatch('/', 'page_main');

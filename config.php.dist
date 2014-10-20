@@ -22,4 +22,10 @@ function nevilis_configure() {
 	 * free to use HTML tags but also take care of proper escaping ;-).
 	 */
 	option('footer', '');
+	
+	/*
+	 * Set to true to disable the whole site. Useful when upgrading
+	 * the database etc.
+	 */
+	option('sitedown', false);
 }

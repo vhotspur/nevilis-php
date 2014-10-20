@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nevilis PHP\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-12 13:30+0200\n"
-"PO-Revision-Date: 2014-10-12 13:31+0100\n"
+"POT-Creation-Date: 2014-10-20 19:47+0200\n"
+"PO-Revision-Date: 2014-10-20 19:57+0100\n"
 "Last-Translator: Vojtech Horky <vhotspur@github.com>\n"
 "Language-Team: cs_CZ\n"
 "Language: cs_CZ\n"
@@ -81,7 +81,7 @@ msgstr "Název úlohy"
 msgid "Assignment not found."
 msgstr "Úloha nebyla nalezena."
 
-#: controllers/main.php:4 controllers/auth.php:4
+#: controllers/main.php:4 controllers/main.php:13 controllers/auth.php:4
 msgid "Assignment submission system"
 msgstr "Systém pro odesílání úloh"
 
@@ -356,7 +356,11 @@ msgstr "Hesla nesouhlasí."
 msgid "Passwords were reset."
 msgstr "Hesla byla vyresetována."
 
-#: index.php:35
+#: views/sitedown.html.php:2
+msgid "Please, come back later."
+msgstr "Prosím, zkuste to za chvíli znovu."
+
+#: index.php:50
 msgid "Please, log in again."
 msgstr "Přihlašte se, prosím, znovu."
 
@@ -388,6 +392,10 @@ msgstr "Vyberte z hlavního menu."
 #, php-format
 msgid "Set assignments for %s (%s)"
 msgstr "Nastavení úloh pro %s (%s)"
+
+#: views/sitedown.html.php:1
+msgid "Sorry, the system is down due to maintenance."
+msgstr "Omlouváme se, probíhá údržba systému"
 
 #: controllers/assignment.php:70
 msgid "The files you are uploading are way too big."

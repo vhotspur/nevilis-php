@@ -22,7 +22,8 @@ VIEWS = \
 	course/index \
 	login \
 	main \
-	password
+	password \
+	sitedown
 
 LANGAUGES = \
 	cs_CZ

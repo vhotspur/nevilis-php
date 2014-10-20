@@ -8,3 +8,8 @@ function page_main() {
 	
 	return html('main.html.php');
 }
+
+function page_sitedown() {
+	set('title', _('Assignment submission system'));
+	return html('sitedown.html.php');
+}

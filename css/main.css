@@ -15,10 +15,13 @@ BODY {
 	max-width: 100%;
 	line-height: 150%;
 }
-BODY.auth #content {
+BODY.auth #content, BODY.sitedown #content {
 	float: none;
 	margin: 1ex auto;
 	width: 40em;
+}
+BODY.sitedown #content, BODY.sitedown #content P {
+	text-align: center;
 }
 ADDRESS#footer {
 	clear: both;
