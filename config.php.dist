@@ -28,4 +28,9 @@ function nevilis_configure() {
 	 * the database etc.
 	 */
 	option('sitedown', false);
+	
+	/*
+	 * Set to true to enable debugging prints.
+	 */
+	option('debug', false);
 }

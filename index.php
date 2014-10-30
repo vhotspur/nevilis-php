@@ -60,6 +60,7 @@ function configure() {
 	option('database', 'sqlite:db/dev.db');
 	option('l10n', 'en_US.utf8');
 	option('sitedown', false);
+	option('debug', false);
 	
 	if (function_exists('nevilis_configure')) {
 		nevilis_configure();
