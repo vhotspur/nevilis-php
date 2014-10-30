@@ -65,7 +65,7 @@
 ?>
 </div>
 <address id="footer">
-%_Nevilis PHP is powered by Limonade PHP. Report bugs to ..._%
+%_<a href="https://github.com/vhotspur/nevilis-php">Nevilis PHP</a> is powered by <a href="http://limonade-php.github.io/">Limonade PHP</a>._%
 %if !@empty($glob_footer)%<br />{$glob_footer}%endif% 
 </address>
 </div>
