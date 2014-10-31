@@ -14,6 +14,12 @@ function db_log_query($description, $sql, $params, $result = null) {
 	);
 }
 
+function db_init($connection_string) {
+	$db = new PDO($connection_string);
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	option('db_conn', $db);
+}
+
 function db_find_objects($description, $sql, $params = array()) {
 	$conn = option('db_conn');
 	

@@ -66,9 +66,7 @@ function configure() {
 		nevilis_configure();
 	}
 	
-	$db = new PDO(option('database'));
-	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	option('db_conn', $db);
+	db_init(option('database'));
 	
 	$lang = option('l10n');
 	putenv("LC_ALL=$lang");
