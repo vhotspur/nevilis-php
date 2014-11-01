@@ -1,5 +1,8 @@
 <?php
 
+// Uncomment if your hosting offers SQLite3 but not through PDO
+// require_once 'pdo_sqlite3.php';
+
 function db_log_query($description, $sql, $params, $result = null) {
 	if (! option('debug')) {
 		return;
@@ -17,6 +20,10 @@ function db_log_query($description, $sql, $params, $result = null) {
 function db_init($connection_string) {
 	$db = new PDO($connection_string);
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	
+	// Uncomment if your hosting offers SQLite3 but not through PDO
+	// $db = new MyPDOWrapperForSqlite3($connection_string);
+	
 	option('db_conn', $db);
 }
 
