@@ -25,6 +25,9 @@ function file_validate($filename, $validators) {
 	$errors = array();
 	
 	foreach ($validators as $validator) {
+		if ($validator == "") {
+			continue;
+		}
 		if (!isset($FILE_VALIDATORS[$validator])) {
 			$errors[] = sprintf(_('unknown file validator %s'), $validator);
 			continue;
