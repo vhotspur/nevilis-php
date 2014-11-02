@@ -18,9 +18,9 @@ function page_file_download() {
 	$path = sprintf('%s/%s/%s/%s', option('file_dir'), $user, $assignment, $filename);
 	// copied from lib/limonade.php
 	if (file_exists($path)) {
-		$content_type = mime_type(file_extension($filename));
+		$content_type = @mime_type(file_extension($filename));
 		$header = 'Content-type: '.$content_type;
-		if (file_is_text($path)) {
+		if (@file_is_text($path)) {
 			$header .= '; charset='.strtolower(option('encoding'));
 		}
 		if (!headers_sent()) {
