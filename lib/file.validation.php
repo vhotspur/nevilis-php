@@ -11,6 +11,16 @@ $GLOBALS['FILE_VALIDATORS'] = array(
 		"error" => _('not a PNG image'),
 		"validator" => "file_validate_png"
 	),
+	"pdf" => array(
+		"name" => _('PDF file'),
+		"error" => _('not a PDF file'),
+		"validator" => "file_validate_pdf"
+	),
+	"msaccess2007" => array(
+		"name" => _('Microsoft Office Access 2007'),
+		"error" => _('not a MS Access 2007 file'),
+		"validator" => "file_validate_msaccess2007"
+	),
 );
 
 function file_validation_get_ids() {
@@ -101,3 +111,14 @@ function file_validate_png($filename) {
 	return true;
 }
 
+function file_validate_pdf($filename) {
+	$pdf_header = array('%', 'P', 'D', 'F', '-');
+	return file_validate_first_bytes($filename, $pdf_header);
+}
+
+function file_validate_msaccess2007($filename) {
+	$header = array(-1, -1, -1, -1,
+		'S', 't', 'a', 'n', 'd', 'a', 'r', 'd', ' ',
+		'A', 'C', 'E', ' ', 'D', 'B');
+	return file_validate_first_bytes($filename, $header);
+}
