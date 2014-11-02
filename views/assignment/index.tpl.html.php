@@ -31,7 +31,7 @@
 	<p>{$f->description/h}</p>
 	<p>
 		%if $f->submitted%
-			<a href="%url($course_id, $assignment_id, $f->filename)%">%_Download your file_%</a>
+			<a href="%url($course_id, $assignment_id, $f->full_filename)%">%_Download your file_%</a>
 		%else%
 			<i>%_File not yet uploaded._%</i>
 		%endif%

@@ -79,7 +79,7 @@ function page_admin_download_single_solution() {
 	$zip = make_zip_on_the_fly_as_attachment($base_name);
 	foreach ($details->files as $f) {
 		if ($f->submitted) {
-			add_solution_file_to_zip($zip, $base_name, $uid, $aid, $f->filename);
+			add_solution_file_to_zip($zip, $base_name, $uid, $aid, $f->full_filename);
 		}
 	}
 	$zip->file();
@@ -106,7 +106,7 @@ function page_admin_download_all_user_solutions() {
 		$dir = $base_name . "/" . $a->aid;
 		foreach ($details->files as $f) {
 			if ($f->submitted) {
-				add_solution_file_to_zip($zip, $dir, $uid, $a->aid, $f->filename);
+				add_solution_file_to_zip($zip, $dir, $uid, $a->aid, $f->full_filename);
 			}
 		}
 	}
@@ -134,7 +134,7 @@ function page_admin_download_all_assignment_solutions() {
 		$dir = $base_name . "/" . $u->uid;
 		foreach ($details->files as $f) {
 			if ($f->submitted) {
-				add_solution_file_to_zip($zip, $dir, $u->uid, $aid, $f->filename);
+				add_solution_file_to_zip($zip, $dir, $u->uid, $aid, $f->full_filename);
 			}
 		}
 	}
@@ -163,7 +163,7 @@ function page_admin_download_all_solutions() {
 			$dir = $base_name . "/" . $a->aid . "/" . $u->uid;
 			foreach ($details->files as $f) {
 				if ($f->submitted) {
-					add_solution_file_to_zip($zip, $dir, $u->uid, $a->aid, $f->filename);
+					add_solution_file_to_zip($zip, $dir, $u->uid, $a->aid, $f->full_filename);
 				}
 			}
 		}

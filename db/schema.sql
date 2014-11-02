@@ -24,7 +24,9 @@ CREATE TABLE "submittedfile" (
 	`sfid`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`user`	TEXT NOT NULL,
 	`file`	INTEGER NOT NULL,
-	`upload_date` DATETIME DEFAULT CURRENT_TIMESTAMP
+	`upload_date` DATETIME DEFAULT CURRENT_TIMESTAMP,
+	`extension` TEXT,
+	`mime` TEXT
 );
 CREATE TABLE `assignmentcomment` (
 	`assignment`	TEXT,

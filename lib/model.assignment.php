@@ -187,6 +187,7 @@ function data_get_assignment_details_for_user($assignment, $user) {
 		"SELECT
 			sfid,
 			upload_date,
+			extension,
 			afid
 		FROM
 			submittedfile
@@ -204,6 +205,7 @@ function data_get_assignment_details_for_user($assignment, $user) {
 				$f->submitted = true;
 				$f->submitted_id = $s->sfid;
 				$f->upload_date = $s->upload_date;
+				$f->full_filename = $f->filename . $s->extension;
 				break;
 			}
 		}

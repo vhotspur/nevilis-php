@@ -4,21 +4,29 @@ $GLOBALS['FILE_VALIDATORS'] = array(
 	"jpeg" => array(
 		"name" => _('JPEG image'),
 		"error" => _('not a JPEG image'),
+		"extension" => '.jpg',
+		"mime" => 'image/jpeg',
 		"validator" => "file_validate_jpeg"
 	),
 	"png" => array(
 		"name" => _('PNG image'),
 		"error" => _('not a PNG image'),
+		"extension" => '.png',
+		"mime" => 'image/png',
 		"validator" => "file_validate_png"
 	),
 	"pdf" => array(
 		"name" => _('PDF file'),
 		"error" => _('not a PDF file'),
+		"extension" => '.pdf',
+		"mime" => 'application/pdf',
 		"validator" => "file_validate_pdf"
 	),
 	"msaccess2007" => array(
 		"name" => _('Microsoft Office Access 2007'),
 		"error" => _('not a MS Access 2007 file'),
+		"extension" => '.accdb',
+		"mime" => 'application/msaccess',
 		"validator" => "file_validate_msaccess2007"
 	),
 );
@@ -32,28 +40,33 @@ function file_validation_get_ids() {
 function file_validate($filename, $validators) {
 	global $FILE_VALIDATORS;
 	
-	$errors = array();
+	$result = array(
+		'errors' => array(),
+		'extension' => '',
+		'mime' => ''
+	);
 	
 	foreach ($validators as $validator) {
 		if ($validator == "") {
 			continue;
 		}
 		if (!isset($FILE_VALIDATORS[$validator])) {
-			$errors[] = sprintf(_('unknown file validator %s'), $validator);
+			$result['errors'][] = sprintf(_('unknown file validator %s'), $validator);
 			continue;
 		}
 		
 		$ok = $FILE_VALIDATORS[$validator]["validator"]($filename);
 		if (!$ok) {
-			$errors[] = $FILE_VALIDATORS[$validator]["error"];
+			$result['errors'][] = $FILE_VALIDATORS[$validator]["error"];
+		} else {
+			$result['extension'] .= $FILE_VALIDATORS[$validator]["extension"];
+			$result['mime'] = $FILE_VALIDATORS[$validator]["mime"];
 		}
 	}
 	
-	if (count($errors) == 0) {
-		return true;
-	} else {
-		return $errors;
-	}
+	$result['ok'] = count($result['errors']) == 0;
+	
+	return $result;
 }
 
 function file_validate_first_bytes($filename, $first_bytes) {

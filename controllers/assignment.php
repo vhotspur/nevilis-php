@@ -76,7 +76,7 @@ function page_assignment_do_upload() {
 		$assignment_id, $usercomment);
 	
 	/* First, prepare the directory where to store them. */
-	$target_directory = sprintf("%s/%s/%s", option('file_dir'), auth_get_current_user(), $assignment_id);
+	$target_directory = sprintf("%s/%s/%s/", option('file_dir'), auth_get_current_user(), $assignment_id);
 	$ok = @mkdir($target_directory, 0777, true);
 	if (!$ok && !is_dir($target_directory)) {
 		flash('error', _('Failed to prepare directory structure. Contact administrator.'));
@@ -106,17 +106,20 @@ function page_assignment_do_upload() {
 		}
 		
 		$validated = file_validate($_FILES[$field]['tmp_name'], $f->validation);
-		if ($validated !== true) {
-			$failed_files[] = array($f->name, implode(', ', $validated));
+		if (!$validated['ok']) {
+			$failed_files[] = array($f->name, implode(', ', $validated['errors']));
 			continue;
 		}
 		
-		$moved = @move_uploaded_file($_FILES[$field]['tmp_name'], $target_directory . '/' . $f->filename);
+		$target_filename = $target_directory . $f->filename . $validated['extension'];
+		$moved = @move_uploaded_file($_FILES[$field]['tmp_name'], $target_filename);
 		if ($moved) {
 			if (!$f->submitted) {
 				data_add_solution_file($f->afid, auth_get_current_user());
 			}
-			data_update_solution_file_timestamp($f->afid, auth_get_current_user());
+			data_update_solution_file_details($f->afid,
+				auth_get_current_user(),
+				$validated['extension'], $validated['mime']);
 			$okay_files[] = $f->name;
 		} else {
 			$failed_files[] = array($f->name, _('failed to move to permanent storage'));

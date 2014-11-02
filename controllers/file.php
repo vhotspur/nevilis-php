@@ -9,8 +9,8 @@ function page_file_download() {
 	check_user_can_view_course($course);
 	check_assignment_belongs_to_course($assignment, $course);
 	
-	$id = data_get_file_id($filename, $user, $assignment);
-	if ($id == 0) {
+	$details = data_get_file_details($filename, $user, $assignment);
+	if ($details == null) {
 		flash('error', _('File not uploaded.'));
 		redirect_to($course, $assignment);
 	}
@@ -18,7 +18,11 @@ function page_file_download() {
 	$path = sprintf('%s/%s/%s/%s', option('file_dir'), $user, $assignment, $filename);
 	// copied from lib/limonade.php
 	if (file_exists($path)) {
-		$content_type = @mime_type(file_extension($filename));
+		if (empty($details->mime)) {
+			$content_type = @mime_type(file_extension($filename));
+		} else {
+			$content_type = $details->mime;
+		}
 		$header = 'Content-type: '.$content_type;
 		if (@file_is_text($path)) {
 			$header .= '; charset='.strtolower(option('encoding'));
