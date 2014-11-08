@@ -111,6 +111,14 @@ function page_assignment_do_upload() {
 			continue;
 		}
 		
+		if ($validated['extension'] == '') {
+			$ext = pathinfo($_FILES[$field]['name'], PATHINFO_EXTENSION);
+			if (!empty($ext)) {
+				$validated['extension'] = "." . $ext;
+			}
+		}
+		
+		
 		$target_filename = $target_directory . $f->filename . $validated['extension'];
 		$moved = @move_uploaded_file($_FILES[$field]['tmp_name'], $target_filename);
 		if ($moved) {
