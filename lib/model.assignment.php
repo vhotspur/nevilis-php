@@ -71,7 +71,8 @@ function data_get_assigments_and_grades_for_course($user, $course) {
 		WHERE
 			course=:course
 		ORDER BY
-			courseassignment.deadline
+			courseassignment.deadline,
+			assignment.name
 		", array("course" => $course));
 
 	if ($assignments == null) {
