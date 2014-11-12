@@ -13,6 +13,8 @@ function db_log_query($description, $sql, $params, $result = null) {
 	$GLOBALS['SQL_QUERIES'][] = array (
 		"description" => $description,
 		"query" => $sql,
+		// Ineffective and ugly way for a deep copy
+		"result" => unserialize(serialize($result)),
 		"params" => $params 
 	);
 }

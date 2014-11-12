@@ -44,11 +44,47 @@
 {$content}
     
 <?php
+	function print_object_as_table_row($obj) {
+		echo("<tr>");
+		foreach (get_object_vars($obj) as $attr => $value) {
+			printf("<td>%s</td>\n", $value);
+		}
+		echo("</tr>");
+	}
+	function print_object_as_table_header($obj) {
+		echo("<tr>");
+		foreach (get_object_vars($obj) as $attr => $value) {
+			printf("<th>%s</th>\n", $attr);
+		}
+		echo("</tr>");
+	}
+
 	function print_queries($title, $queries) {
 		printf("<h2>%s</h2>\n<dl>", h ( $title ) );
 		foreach ( $queries as $q ) {
 			printf("<dt>%s</dt>\n", h($q["description"] == "" ? "<no description given>" : $q["description"]));
-			printf("<dd><pre style=\"%s\">%s\n---\n%s</pre></dd>\n", "border: 1px solid #eee; margin: 1ex 0; padding: 5px;", $q ["query"], h ( var_export ( $q ["params"], true ) ) );
+			printf("<dd><pre style=\"%s\">%s\n---\n%s</pre>\n", "border: 1px solid #eee; margin: 1ex 0; padding: 5px;", $q ["query"], h ( var_export ( $q ["params"], true ) ) );
+			printf("<table border='1' cellspacing='0' cellpadding='2' style='border-collapse:collapse; border: 1px solid'>\n");
+			if (is_array($q["result"])) {
+				$first = true;
+				foreach ($q["result"] as $row) {
+					if ($first) {
+						print_object_as_table_header($row);
+						$first = false;
+					}
+					print_object_as_table_row($row);
+				}
+				if ($first) {
+					echo("<tr><td><i>no data</i></td></tr>");
+				}
+			} else if (is_object($q["result"])) {
+				print_object_as_table_header($q["result"]);
+				print_object_as_table_row($q["result"]);
+			} else {
+				printf("<tr><td><i>%s</i></td></tr>", var_export($q["result"], true));
+			}
+			printf("</table>\n");
+			printf("</dd>\n");
 		}
 		printf("</dl>\n");
 	}
