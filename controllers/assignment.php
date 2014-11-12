@@ -95,7 +95,7 @@ function page_assignment_do_upload() {
 			if ($_FILES[$field]['error'] == UPLOAD_ERR_NO_FILE) {
 				continue;
 			}
-			$failed_files[] = array($f->name, $_FILES[$field]['error']);
+			$failed_files[] = array($f->name, get_file_upload_error_string($_FILES[$field]['error']));
 			continue;
 		}
 		

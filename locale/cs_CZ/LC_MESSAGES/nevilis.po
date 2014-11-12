@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nevilis PHP\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 09:23+0100\n"
-"PO-Revision-Date: 2014-10-30 09:25+0100\n"
+"POT-Creation-Date: 2014-11-12 08:37+0100\n"
+"PO-Revision-Date: 2014-11-12 08:40+0100\n"
 "Last-Translator: Vojtech Horky <vhotspur@github.com>\n"
 "Language-Team: cs_CZ\n"
 "Language: cs_CZ\n"
@@ -234,7 +234,7 @@ msgid "Failed to prepare directory structure. Contact administrator."
 msgstr ""
 "Nepodařilo se připravit adresářovou strukturu. Upozorněte administrátora."
 
-#: controllers/file.php:31
+#: controllers/file.php:35
 #, php-format
 msgid "File %s not found, contact administrator."
 msgstr "Soubor %s nebyl nalezen, upozorněte administrátora."
@@ -255,7 +255,7 @@ msgstr "Teď není možné nahrávat soubory."
 msgid "Files"
 msgstr "Soubory"
 
-#: controllers/assignment.php:131
+#: controllers/assignment.php:142
 msgid ""
 "Following files were uploaded (to verify they are not damaged, try to "
 "download them):"
@@ -308,6 +308,10 @@ msgstr "Stažení"
 msgid "Menu"
 msgstr "Navigace"
 
+#: lib/file.validation.php:26
+msgid "Microsoft Office Access 2007"
+msgstr "Microsoft Office Access 2007"
+
 #: views/admin/assignment_edit.html.php:11
 msgid "Name"
 msgstr "Jméno"
@@ -328,7 +332,11 @@ msgstr "Zatím nebyly zadány žádné úlohy."
 msgid "Not uploaded."
 msgstr "Soubor nebyl nahrán."
 
-#: lib/file.validation.php:10
+#: lib/file.validation.php:19
+msgid "PDF file"
+msgstr "PDF soubor"
+
+#: lib/file.validation.php:12
 msgid "PNG image"
 msgstr "PNG obrázek"
 
@@ -427,7 +435,7 @@ msgstr "Aktualizovat"
 msgid "Upload files..."
 msgstr "Nahrát soubory..."
 
-#: controllers/assignment.php:141
+#: controllers/assignment.php:152
 msgid "Upload of following files failed:"
 msgstr "Následující soubory se nepodařilo nahrát:"
 
@@ -496,7 +504,7 @@ msgstr "Vaše hodnocení"
 msgid "cannot be changed"
 msgstr "nelze změnit"
 
-#: controllers/assignment.php:122
+#: controllers/assignment.php:133
 msgid "failed to move to permanent storage"
 msgstr "nepodařilo se přesunou do cílového umístění"
 
@@ -505,18 +513,55 @@ msgstr "nepodařilo se přesunou do cílového umístění"
 msgid "file is too big, maximum allowed size is %dKB"
 msgstr "soubor je příliš velký, maximální velikost je %dKB"
 
+#: lib/helpers.php:53
+msgid "file was not fully uploaded, retry please"
+msgstr "soubor se nepodařilo kompletně nahrát, zkuste to, prosím, znovu"
+
+#: lib/helpers.php:59
+msgid "internal error, cannot write to the disk"
+msgstr "vnitřní chyba, nelze zapisovat na disk"
+
+#: lib/helpers.php:57
+msgid "internal error, missing temporary directory"
+msgstr "vnitřní chyba, chybí adresář pro dočasné soubory"
+
+#: lib/helpers.php:48
+msgid "no error"
+msgstr "žádná chyba"
+
+#: lib/helpers.php:55
+msgid "no file provided"
+msgstr "soubor nebyl zadán"
+
 #: lib/file.validation.php:6
 msgid "not a JPEG image"
 msgstr "nejde o JPEG obrázek"
 
-#: lib/file.validation.php:11
+#: lib/file.validation.php:27
+msgid "not a MS Access 2007 file"
+msgstr "nejde o soubor MS Access 2007"
+
+#: lib/file.validation.php:20
+msgid "not a PDF file"
+msgstr "nejde o PDF soubor"
+
+#: lib/file.validation.php:13
 msgid "not a PNG image"
 msgstr "nejde o PNG obrázek"
 
-#: lib/file.validation.php:29
+#: lib/helpers.php:51
+msgid "the file is too big"
+msgstr "soubor je příliš velký"
+
+#: lib/file.validation.php:54
 #, php-format
 msgid "unknown file validator %s"
 msgstr "neznámý validátor souborů %s"
+
+#: lib/helpers.php:61
+#, php-format
+msgid "unspecified internal error %s"
+msgstr "neočekávaná vnitřní chyba %s"
 
 #~ msgid "Change your password."
 #~ msgstr "Změnit heslo."
