@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nevilis PHP\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-12 08:37+0100\n"
-"PO-Revision-Date: 2014-11-12 08:40+0100\n"
+"POT-Creation-Date: 2014-11-12 09:40+0100\n"
+"PO-Revision-Date: 2014-11-12 09:40+0100\n"
 "Last-Translator: Vojtech Horky <vhotspur@github.com>\n"
 "Language-Team: cs_CZ\n"
 "Language: cs_CZ\n"
@@ -32,7 +32,7 @@ msgstr "%d hodin"
 msgid "%d minutes"
 msgstr "%d minut"
 
-#: views/layout/default.html.php:68
+#: views/layout/default.html.php:104
 msgid ""
 "<a href=\"https://github.com/vhotspur/nevilis-php\">Nevilis PHP</a> is "
 "powered by <a href=\"http://limonade-php.github.io/\">Limonade PHP</a>."
@@ -499,6 +499,10 @@ msgstr "Váš komentář"
 msgid "Your grade"
 msgstr "Vaše hodnocení"
 
+#: lib/file.validation.php:33
+msgid "ZIP archive"
+msgstr "ZIP archiv"
+
 #: views/admin/user_edit.html.php:8 views/admin/assignment_edit.html.php:8
 #: views/admin/course_edit.html.php:8
 msgid "cannot be changed"
@@ -549,11 +553,15 @@ msgstr "nejde o PDF soubor"
 msgid "not a PNG image"
 msgstr "nejde o PNG obrázek"
 
+#: lib/file.validation.php:34
+msgid "not a ZIP archive"
+msgstr "nejde o ZIP archiv"
+
 #: lib/helpers.php:51
 msgid "the file is too big"
 msgstr "soubor je příliš velký"
 
-#: lib/file.validation.php:54
+#: lib/file.validation.php:61
 #, php-format
 msgid "unknown file validator %s"
 msgstr "neznámý validátor souborů %s"

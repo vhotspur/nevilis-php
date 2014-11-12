@@ -29,6 +29,13 @@ $GLOBALS['FILE_VALIDATORS'] = array(
 		"mime" => 'application/msaccess',
 		"validator" => "file_validate_msaccess2007"
 	),
+	"pkzip" => array(
+		"name" => _('ZIP archive'),
+		"error" => _('not a ZIP archive'),
+		"extension" => '.zip',
+		"mime" => 'application/zip',
+		"validator" => "file_validate_pkzip"
+	),
 );
 
 function file_validation_get_ids() {
@@ -137,5 +144,10 @@ function file_validate_msaccess2007($filename) {
 	$header = array(-1, -1, -1, -1,
 		'S', 't', 'a', 'n', 'd', 'a', 'r', 'd', ' ',
 		'A', 'C', 'E', ' ', 'D', 'B');
+	return file_validate_first_bytes($filename, $header);
+}
+
+function file_validate_pkzip($filename) {
+	$header = array('P', 'K', 3, 4);
 	return file_validate_first_bytes($filename, $header);
 }
