@@ -81,10 +81,14 @@ function file_validate_first_bytes($filename, $first_bytes) {
 	if ($data === false) {
 		return false;
 	}
-	$bytes = str_split($data);
+	$bytes = array_values(unpack('C*', $data));
+	
 	for ($i = 0; $i < $bytes_to_read; $i++) {
 		if ($first_bytes[$i] === -1) {
 			continue;
+		}
+		if (is_string($first_bytes[$i])) {
+			$first_bytes[$i] = ord($first_bytes[$i]);
 		}
 		if ($first_bytes[$i] != $bytes[$i]) {
 			return false;
