@@ -32,19 +32,19 @@ INSERT INTO "courseusers" VALUES('user1','c1');
 INSERT INTO "assignment" VALUES('hw1','Homework #1','This is some description');
 INSERT INTO "assignment" VALUES('hw2','Second homework','Lorem Ipsum Dolor Sit Amet.');
 INSERT INTO "assignment" VALUES('hw3','Last homework','Lorem Ipsum Dolor Sit Amet.');
-INSERT INTO "assignmentfile" VALUES(1,'xxx.jpg','hw2','Picture','Your picture',45000,'jpeg');
-INSERT INTO "assignmentfile" VALUES(2,'yyy.png','hw1','Some PNG','First assignment picture',500,'png');
-INSERT INTO "assignmentfile" VALUES(3,'zzz.jpg','hw2','Two','Another picture',45000,'jpeg');
-INSERT INTO "assignmentfile" VALUES(4,'aaa.jpg','hw3','Lorem Ipsum','Another picture',45000,'jpeg');
+INSERT INTO "assignmentfile" VALUES(1,'xxx','hw2','Picture','Your picture',45000,'jpeg');
+INSERT INTO "assignmentfile" VALUES(2,'yyy','hw1','Some PNG','First assignment picture',500,'png');
+INSERT INTO "assignmentfile" VALUES(3,'zzz','hw2','Two','Another picture',45000,'jpeg');
+INSERT INTO "assignmentfile" VALUES(4,'aaa','hw3','Lorem Ipsum','Another picture',45000,'jpeg');
 
 -- Deadlines will be fixed later
 INSERT INTO "courseassignment" VALUES('c1','hw1', NULL, NULL);
 INSERT INTO "courseassignment" VALUES('c1','hw2', NULL, NULL);
 INSERT INTO "courseassignment" VALUES('c1','hw3', NULL, NULL);
 
-INSERT INTO "submittedfile" VALUES(1,'user1',2, NULL);
-INSERT INTO "submittedfile" VALUES(2,'user1',1, NULL);
-INSERT INTO "submittedfile" VALUES(3,'user1',3, NULL);
+INSERT INTO "submittedfile" VALUES(1,'user1',2, NULL, '.png', 'image/png');
+INSERT INTO "submittedfile" VALUES(2,'user1',1, NULL, '.jpg', 'image/jpeg');
+INSERT INTO "submittedfile" VALUES(3,'user1',3, NULL, '.jpeg', NULL);
 INSERT INTO "grade" VALUES('user1','hw1',2,1,'Not bad, really :-).');
 INSERT INTO "grade" VALUES('user1','hw2',null,0,'Fix this!');
 
