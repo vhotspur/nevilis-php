@@ -11,6 +11,8 @@ VIEWS = \
 	admin/download_whole_course \
 	admin/enroll_edit \
 	admin/enroll_main \
+	admin/grade_assignment \
+	admin/grade_course_main \
 	admin/grade_main \
 	admin/grade_whole_course \
 	admin/grade_whole_course_print \

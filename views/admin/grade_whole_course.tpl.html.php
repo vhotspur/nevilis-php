@@ -1,4 +1,4 @@
-<form method="post" action="%url('admin', 'grade', $cid)%">
+<form method="post" action="%url('admin', 'grade', $cid, 'all')%">
 
 <table border="1">
 <tr>

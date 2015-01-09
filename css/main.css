@@ -121,25 +121,42 @@ A:hover {
 	background-color: #EEF;
 }
 
-TABLE.assignments, TABLE.assignments TH, TABLE.assignments TD {
+TABLE.assignments, TABLE.assignments TH, TABLE.assignments TD,
+TABLE.grading, TABLE.grading TH, TABLE.grading TD {
 	border-collapse: collapse;
 	padding: 4px 1ex;
 }
-TABLE.assignments {
+TABLE.assignments, TABLE.grading {
 	margin: 1ex auto;
 	border: 2px solid black;
 	border-width: 2px 0;
 }
-TABLE.assignments TH {
+TABLE.assignments TH, TABLE.grading TH {
 	border-bottom: 1px solid black;
 	padding: 0.5ex 1em;
 	text-align: center;
+}
+TABLE.grading TBODY TH {
+	border-bottom: 0px none;
+	text-align: left;
 }
 TABLE.assignments TD {
 	text-align: center;
 }
 TABLE.assignments TD.name, TABLE.assignments TD.comment {
 	text-align: left;
+}
+TABLE.grading TD.grading {
+	text-align: center;
+}
+TABLE.grading TD INPUT {
+	width: 80%;
+}
+TABLE.grading TD.locked INPUT {
+	width: inherit;
+}
+TABLE.grading TD.grading.grade INPUT {
+	text-align: center;
 }
 
 FORM.files FIELDSET {

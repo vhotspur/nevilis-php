@@ -8,6 +8,8 @@ admin/download_main.html.php
 admin/download_whole_course.html.php
 admin/enroll_edit.html.php
 admin/enroll_main.html.php
+admin/grade_assignment.html.php
+admin/grade_course_main.html.php
 admin/grade_main.html.php
 admin/grade_whole_course.html.php
 admin/grade_whole_course_print.html.php
